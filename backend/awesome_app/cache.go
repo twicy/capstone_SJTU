@@ -26,3 +26,7 @@ func InitRedis() (err error) {
 	}
 	return
 }
+
+func RedisInsert(ID int, LastName string, FirstName string, Age int) {
+
+}

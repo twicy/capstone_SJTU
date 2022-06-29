@@ -41,5 +41,5 @@ func main() {
 	// AddData(1, "YYier", "DDong", 23)
 	router := gin.Default()
 	router.GET("/albums", getAlbums)
-	router.Run("localhost:8080")
+	router.Run(":8080")
 }
