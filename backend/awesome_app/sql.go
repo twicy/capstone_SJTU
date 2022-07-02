@@ -13,7 +13,7 @@ import (
 var SQLDB *sql.DB
 
 func InitSQL() (err error) {
-	SQLDB, err = sql.Open("mysql", "dong12:ve450@/dong")
+	SQLDB, err = sql.Open("mysql", "client1:password@/testdb")
 	if err != nil {
 		fmt.Println("SQL Connection fail", err)
 	}

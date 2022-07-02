@@ -17,6 +17,34 @@
 
 ## 代码说明
 **生成sql** 
+
+https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost
+OPTION2
+    sudo service mysql start
+    # create a user and grant privilege
+show databases
+//use mysql
+//SELECT DATABASE() FROM DUAL;
+CREATE USER IF NOT EXISTS 'client1'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'client1'@'localhost';
+//UPDATE user SET plugin='auth_socket' WHERE User='client1';
+FLUSH PRIVILEGES;
+exit;
+
+sudo service mysql restart
+mysql -u "client1" -p 
+
+create database testdb;
+quit;
+mysql -u client1 -p testdb < dong.sql
+
+
+**How to drop a user**
+https://www.cyberciti.biz/faq/how-to-delete-remove-user-account-in-mysql-mariadb/
+REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'bloguser'@'localhost';
+DROP USER 'bloguser'@'localhost';
+
+
 * 使用 `mysql -uUSERNAME -pPASSWORD -hHOSTNAME USER_DATABASE < dong.sql` 直接导入 `generate_sql/dong.sql`, 然后使用其中名为`warning`的表
 * 或运行 `generate_sql/write_sql.ipynb`, 记得在代码中修改自己sql的用户名， 密码和database
 

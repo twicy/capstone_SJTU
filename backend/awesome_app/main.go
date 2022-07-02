@@ -38,7 +38,7 @@ func main() {
 	InitSQL()
 	// init redis connection
 	InitRedis()
-	// AddData(1, "YYier", "DDong", 23)
+	AddData(1, "YYier", "DDong", 24)
 	router := gin.Default()
 	router.GET("/albums", getAlbums)
 	router.Run(":8080")
