@@ -33,6 +33,9 @@ func getAlbums(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, albums)
 }
 
+
+
+
 func main() {
 	// init sql connection
 	InitSQL()
@@ -41,5 +44,7 @@ func main() {
 	AddData(1, "YYier", "DDong", 24)
 	router := gin.Default()
 	router.GET("/albums", getAlbums)
+	router.GET("/warnings/:id", getWarningByID)
+	router.GET("/warnings", getWarningByTime)
 	router.Run(":8080")
 }

@@ -5,7 +5,8 @@ package main
 import (
 	"database/sql"
 	"fmt"
-
+	"github.com/gin-gonic/gin"
+	"net/http"
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -45,3 +46,39 @@ func SQLInsert(ID int, LastName string, FirstName string, Age int) {
 		fmt.Println("can not insert = ", err)
 	}
 }
+
+
+func getWarningByID(c *gin.Context){
+	id := c.Param("id")
+	var war Warning
+	err := SQLDB.QueryRow(
+		"SELECT * FROM warning where id = ?",
+		id).
+		Scan(
+			&war.ID, 
+			&war.Label_Chinese,
+			&war.Label_English,
+			&war.Function_name,
+			&war.Function_Chinese,
+			&war.Function_English,
+			&war.Group_label_Chinese,
+			&war.Group_label_English,
+			&war.Machine_obj_Chinese,
+			&war.Machine_obj_English,
+			&war.Value,
+			&war.Time,
+		)
+	if err != nil {
+		panic(err.Error()) // proper error handling instead of panic in your app
+	}
+	c.IndentedJSON(http.StatusOK, war)
+}
+
+
+func getWarningByTime(c *gin.Context){
+	c.IndentedJSON(http.StatusOK, albums)
+}
+
+
+
+
