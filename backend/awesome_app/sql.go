@@ -49,6 +49,7 @@ func SQLInsert(ID int, LastName string, FirstName string, Age int) {
 }
 
 func getWarningByID(c *gin.Context) {
+
 	id := c.Param("id")
 	var war Warning
 	err := SQLDB.QueryRow(

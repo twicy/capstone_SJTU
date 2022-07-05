@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -28,6 +29,7 @@ func main() {
 	InitRedis()
 	AddData(1, "YYier", "DDong", 24)
 	router := gin.Default()
+	router.Use(cors.Default())
 	router.GET("/albums", getAlbums)
 	router.GET("/warnings/:id", getWarningByID)
 	router.GET("/warnings", getWarningAll)
