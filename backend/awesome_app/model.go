@@ -6,7 +6,7 @@
 package main
 
 type Warning struct {
-	ID                  string `json:"id"`
+	ID                  int    `json:"id"`
 	Label_Chinese       string `json:"label_Chinese"`
 	Label_English       string `json:"label_English"`
 	Function_name       string `json:"function_name"`
@@ -16,13 +16,13 @@ type Warning struct {
 	Group_label_English string `json:"group_label_English"`
 	Machine_obj_Chinese string `json:"machine_obj_Chinese"`
 	Machine_obj_English string `json:"machine_obj_English"`
-	Value               string `json:"value"`
+	Value               int    `json:"value"`
 	Time                string `json:"time"`
 }
 
 type WarningUpdate struct {
-	ID    string `json:"id"`
-	Value string `json:"value"`
+	ID    int `json:"id"`
+	Value int `json:"value"`
 }
 
 type person struct {

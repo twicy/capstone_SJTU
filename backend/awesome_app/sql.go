@@ -106,5 +106,17 @@ func getWarningAll(c *gin.Context) {
 
 func putWarning(c *gin.Context) {
 	// get the model if exist
-
+	var war WarningUpdate
+	err := c.ShouldBindJSON(&war)
+	if err != nil {
+		panic(err.Error())
+	}
+	sqlStmt := "UPDATE warning SET value = ? WHERE id = ?"
+	_, err = SQLDB.Exec(sqlStmt, war.Value, war.ID)
+	if err != nil {
+		panic(err.Error())
+	}
+	c.JSON(http.StatusOK, gin.H{
+		"message": fmt.Sprintf("Successfully update to warning id %d", war.ID),
+	})
 }
