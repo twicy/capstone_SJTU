@@ -25,13 +25,6 @@ type WarningUpdate struct {
 	Value int `json:"value"`
 }
 
-type person struct {
-	ID        int
-	LastName  string
-	FirstName string
-	Age       int
-}
-
 // experiment struct for gin
 type album struct {
 	ID     string  `json:"id"`

@@ -4,10 +4,7 @@ package main
 
 import (
 	"database/sql"
-	"fmt"
-	"net/http"
 
-	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -17,41 +14,12 @@ var SQLDB *sql.DB
 func InitSQL() (err error) {
 	SQLDB, err = sql.Open("mysql", "client1:password@/testdb")
 	if err != nil {
-		fmt.Println("SQL Connection fail", err)
+		panic(err.Error())
 	}
 	return
 }
 
-func SQLExists(ID int) (exists bool) {
-	row := SQLDB.QueryRow("SELECT ID FROM Persons Where ID = ?", ID)
-	person := person{}
-	if err := row.Scan(&person.ID); err != nil {
-		fmt.Println("can not find ID = ", ID)
-		return false
-	}
-	return true
-}
-
-func SQLUpdate(ID int, LastName string, FirstName string, Age int) {
-	sqlStmt := "UPDATE Persons SET LastName = ?, FirstName = ?, Age = ? WHERE ID = ?"
-	_, err := SQLDB.Exec(sqlStmt, LastName, FirstName, Age, ID)
-	if err != nil {
-		fmt.Println("can not update = ", err)
-	}
-}
-
-func SQLInsert(ID int, LastName string, FirstName string, Age int) {
-	sqlStmt := "INSERT INTO Persons VALUES (?, ?, ?, ?)"
-	_, err := SQLDB.Exec(sqlStmt, ID, LastName, FirstName, Age)
-	if err != nil {
-		fmt.Println("can not insert = ", err)
-	}
-}
-
-func getWarningByID(c *gin.Context) {
-
-	id := c.Param("id")
-	var war Warning
+func getWarningByIDSQL(id int) (war Warning) {
 	err := SQLDB.QueryRow(
 		"SELECT * FROM warning where id = ?",
 		id).
@@ -72,15 +40,14 @@ func getWarningByID(c *gin.Context) {
 	if err != nil {
 		panic(err.Error()) // proper error handling instead of panic in your app
 	}
-	c.IndentedJSON(http.StatusOK, war)
+	return war
 }
 
-func getWarningAll(c *gin.Context) {
+func getWarningAllSQL() (wars []Warning) {
 	rows, err := SQLDB.Query("SELECT * FROM warning")
 	if err != nil {
-		panic(err.Error()) // proper error handling instead of panic in your app
+		panic(err.Error())
 	}
-	var wars []Warning
 	for rows.Next() {
 		var war Warning
 		err := rows.Scan(
@@ -102,22 +69,13 @@ func getWarningAll(c *gin.Context) {
 		}
 		wars = append(wars, war)
 	}
-	c.IndentedJSON(http.StatusOK, wars)
+	return wars
 }
 
-func putWarning(c *gin.Context) {
-	// get the model if exist
-	var war WarningUpdate
-	err := c.ShouldBindJSON(&war)
-	if err != nil {
-		panic(err.Error())
-	}
+func putWarningSQL(warup WarningUpdate) {
 	sqlStmt := "UPDATE warning SET value = ? WHERE id = ?"
-	_, err = SQLDB.Exec(sqlStmt, war.Value, war.ID)
+	_, err := SQLDB.Exec(sqlStmt, warup.Value, warup.ID)
 	if err != nil {
 		panic(err.Error())
 	}
-	c.JSON(http.StatusOK, gin.H{
-		"message": fmt.Sprintf("Successfully update to warning id %d", war.ID),
-	})
 }
