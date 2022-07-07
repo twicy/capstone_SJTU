@@ -40,9 +40,31 @@ func InitDataRedis() {
 		if err != nil {
 			panic(err.Error())
 		}
-		redisDB.Set(Ctx, id_str, string(b), 0)
+		redisDB.Set(Ctx, id_str, string(b), 0) //value 0 means no expiration
 	}
+}
 
+func addWarningRedis(war Warning) {
+	id_int := war.ID
+	id_str := strconv.Itoa(id_int)
+	b, err := json.Marshal(war)
+	if err != nil {
+		panic(err.Error())
+	}
+	redisDB.Set(Ctx, id_str, string(b), 0)
+}
+
+func checkExistByIDRedis(id int) bool {
+	id_str := strconv.Itoa(id)
+	exist, err := redisDB.Exists(Ctx, id_str).Result()
+	if err != nil {
+		panic(err.Error())
+	}
+	if exist == 1 {
+		return true
+	} else {
+		return false
+	}
 }
 
 func getWarningByIDRedis(id int) (war Warning) {
@@ -53,4 +75,12 @@ func getWarningByIDRedis(id int) (war Warning) {
 	}
 	json.Unmarshal([]byte(s), &war)
 	return war
+}
+
+func deleteWarningByIDRedis(id int) {
+	id_str := strconv.Itoa(id)
+	_, err := redisDB.Del(Ctx, id_str).Result()
+	if err != nil {
+		panic(err.Error())
+	}
 }
