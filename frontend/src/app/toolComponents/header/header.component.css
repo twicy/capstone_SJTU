@@ -1,0 +1,10 @@
+.mat-toolbar-row{
+  background-color:#3e4349;
+  border-bottom: 3px solid red;
+}
+button{
+  background-color: white;
+}
+ul{
+  display: flex;
+}

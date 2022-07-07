@@ -1,0 +1,37 @@
+<mat-nav-list>
+  <div class="profile-card">
+    <div class="header">
+      <h2>Machine Dashboard</h2>
+    </div>
+    <img src="assets/logo.png"  style="width:250px ;"/>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <h2 matSubheader>Select a category</h2>
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/"
+  >ControlBoard</a
+  >
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/vis"
+    >Visualizations</a
+  >
+  
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/more"
+    >Todo</a
+  >
+
+  <mat-divider></mat-divider>
+
+  <h2 matSubheader>Tools</h2>
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
+    <mat-icon>import_contacts</mat-icon>
+    Contacts
+  </a>
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/leads">
+    <mat-icon>contact_phone</mat-icon>
+    Leads
+  </a>
+</mat-nav-list>
