@@ -1,0 +1,38 @@
+<h2>{{displayHidden?"已屏蔽警报":"警报"}}</h2>
+<table>
+    <tr class="table-head">
+        <th>编号</th>
+        <th>名称</th>
+        <th>警报时间</th>
+        <th>机器名称</th>
+        <th>屏蔽</th>
+    </tr>
+
+    <tr *ngFor="let warning of (displayHidden==true?lstHiddenWarnings:lstAllWarnings) | paginate
+        : {
+            itemsPerPage: tableSize,
+            currentPage: page,
+            totalItems: count
+        };
+        let i = index" class="table-body" (click)="onClickItem($event,warning)">
+        <th scope="row" >{{warning.id}}</th>
+        <td >{{warning.label_Chinese}}</td>
+        <td>{{warning.time}}</td>
+        <td>{{warning.machine_obj_Chinese}}</td>
+        <td>{{warning.value}}</td>
+        
+    </tr>
+</table>
+<div class="d-flex justify-content-center clearfix">
+    <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      (pageChange)="onTableDataChange($event)"
+    >
+    </pagination-controls>
+  </div>
+
+<button (click)="onReverse()" >Reverse Status</button>
+<button (click)="onClickAll()">所有</button>
+
+<button (click)="onClickHidden()">屏蔽</button>

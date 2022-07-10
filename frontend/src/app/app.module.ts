@@ -13,18 +13,20 @@ import { SidebarComponent } from './toolComponents/sidebar/sidebar.component';
 import { WarningDetailComponent } from './toolComponents/warning-detail/warning-detail.component';
 import { LayoutComponent } from './layout/layout.component';
 import { VisualizationComponent } from './pages/visualization/visualization.component';
+import { PiechartComponent } from './graph/pie-chart/pie-chart.component';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { ElectronService } from './core/services';
+import { WarninglistService } from './services/warnings/warninglist.service';
 
-import * as PlotlyJS from 'plotly.js-dist-min';
-import { PlotlyModule } from 'angular-plotly.js';
+
 import { ControlBoardComponent } from './pages/control-board/control-board.component';
+import { WarningsComponent } from './pages/modules/warnings/warnings.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
-PlotlyModule.plotlyjs = PlotlyJS;
 
 @NgModule({
   declarations: [
@@ -32,11 +34,12 @@ PlotlyModule.plotlyjs = PlotlyJS;
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    WarningDetailComponent, 
     LayoutComponent,
     VisualizationComponent,
     ControlBoardComponent,
-    
+    WarningsComponent,
+    WarningDetailComponent,  
+    PiechartComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,10 +47,10 @@ PlotlyModule.plotlyjs = PlotlyJS;
     BrowserAnimationsModule,
     MaterialExampleModule,
     CommonModule, 
-    PlotlyModule,
     HttpClientModule,
+    NgxPaginationModule,
   ],
-  providers: [],
+  providers: [WarninglistService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

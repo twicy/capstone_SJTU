@@ -4,6 +4,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { VisualizationComponent } from './pages/visualization/visualization.component';
 import { CommonModule } from '@angular/common';
 import { ControlBoardComponent } from './pages/control-board/control-board.component';
+import { WarningsComponent } from './pages/modules/warnings/warnings.component';
 
 
 const routes: Routes = [{
@@ -17,7 +18,29 @@ const routes: Routes = [{
     },
     {
       path:'',
-      component:ControlBoardComponent
+      redirectTo:'Machine',
+      pathMatch: 'full',
+      // component:ControlBoardComponent
+    },
+    {
+      path:'Machine',
+      component:ControlBoardComponent,
+      children:[
+        {
+          path:'',
+          component:WarningsComponent,
+          // outlet:"table-outlet",
+          pathMatch:'full'
+        },
+        
+        {
+          path: ':id',
+          component:WarningsComponent,
+          // outlet:"table-outlet",
+          // pathMatch:'full'
+        },
+        
+      ]
     }
     
   ]
@@ -25,7 +48,7 @@ const routes: Routes = [{
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  
+
 exports: [RouterModule]
 })
 export class AppRoutingModule { }

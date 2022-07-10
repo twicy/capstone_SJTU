@@ -35,11 +35,6 @@ export class WarningDetailComponent implements OnInit {
             funCTion_label_p: '',
             group_label_p: '',
             maCHine_label_p: '',
-            // status_code: 1,
-            // lable_CHinese: '警告：储存器内的数据被删除',
-            // funCTion_label_p: '功能: 控制柜启动',
-            // group_label_p: '电控柜公共组件',
-            // maCHine_label_p: '主机电柜',
             },
     };
     BtOne_Click() {

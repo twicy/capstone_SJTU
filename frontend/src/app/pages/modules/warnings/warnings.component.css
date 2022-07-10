@@ -1,0 +1,32 @@
+*{
+    font-size:15px;
+    color:white;
+}
+
+button{
+    padding:10px 20px;
+    color:saddlebrown;
+}
+
+tr.table-head th{
+    text-align: center;
+    border:1px solid white;
+    padding:10px 30px;
+}
+tr.table-body td,
+tr.table-body th
+{
+    text-align: center;
+    padding:10px 30px;
+}
+
+tr{
+    border-bottom: 1px solid white;
+    border-right:1px solid white;
+}
+
+tr.table-body:hover{
+    background-color: grey;
+}
+
+

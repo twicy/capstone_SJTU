@@ -57,7 +57,7 @@
             
           <span> <!-- style="display: none;" 隐藏-->
             <div style="height: 88%;margin-left: -15px;margin-right:-10px;">
-              此区域放3D模型,它们不带Menu.   
+              TABLE   
               <router-outlet></router-outlet>
             </div>
   
@@ -92,7 +92,7 @@
                 图标按键5
                </button>
   
-               <button class="btn btn-default"   [routerLink]="[{outlets:{primary:'io/io_ethercattopologyhost',region_machines:'regionmac'}}]">
+                 <button class="btn btn-default"   [routerLink]="[{outlets:{primary:'io/io_ethercattopologyhost',region_machines:'regionmac'}}]">
                 <span class="glyphicon glyphicon-upload"></span>
                 <br/>
                 图标按键6
@@ -137,7 +137,12 @@
           
             <div id="m_content_sbub5">
               <!-- Machines区域 -->
-              <router-outlet name="region_machines"></router-outlet>
+              <button class="select-machine" routerLink="/">所有机器</button>
+              <button class="select-machine" [routerLink]="[1]">主机</button>
+              <button  class="select-machine" (click)="goToNext(2)">主机辅助</button>
+              <button class="select-machine" (click)="goToNext(3)">铝箔纸包装</button>
+              
+              <!-- <router-outlet name="region_machines"></router-outlet> -->
             </div>
             <div   id="m_content_sbub6">
               Groups区域

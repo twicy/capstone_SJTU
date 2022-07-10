@@ -5,6 +5,7 @@ import { ElectronService } from 'src/app/core/services';
 import { Router} from '@angular/router';
 
 
+
 @Component({
   selector: 'app-control-board',
   templateUrl: './control-board.component.html',
@@ -40,8 +41,8 @@ export class ControlBoardComponent implements OnInit {
   };
   ngOnInit(): void {
   }
-  BtOne_Click(){
-    
+  goToNext(id:number){
+    this.router.navigate([`/Machine`,id]);
     //alert("按钮1事件");
     //this.router.navigate(['/news']);
 
