@@ -32,12 +32,8 @@ def repeater(rand):
             db_Info = connection.get_server_info()
             logger.debug("Connected to MySQL Server version " + str(db_Info))
             cursor = connection.cursor()
-            dict = {}
-            dict["time"] = time()
-            dict["warning_id"] = rand
-            dict["value"] = 0
-            r = requests.post(url = url_str, data = json.dumps(dict))
-            print(json.dumps(dict))
+            temp_str = url_str + "/" + str(rand)
+            r = requests.post(url=temp_str, data=json.dumps({}))
             logger.debug("receiving the following results from api server:")
             logger.debug(r.text)
 

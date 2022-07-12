@@ -6,13 +6,14 @@ import (
 	"database/sql"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
+	"time"
 )
 
 // sql connection as a global variable
 var SQLDB *sql.DB
 
 func InitSQL() (err error) {
-	SQLDB, err = sql.Open("mysql", "client1:password@/testdb")
+	SQLDB, err = sql.Open("mysql", "client1:password@/testdb?parseTime=true")
 	if err != nil {
 		panic(err.Error())
 	}
@@ -81,7 +82,7 @@ func putWarningSQL(warup WarningUpdate) {
 }
 
 
-func insertWarningSQL(incomingWarning History) {
+func insertWarningSQL(id int) {
 	sqlStmt := `
 	INSERT INTO history (
 		warning_id,
@@ -91,12 +92,20 @@ func insertWarningSQL(incomingWarning History) {
 	
 	_, err := SQLDB.Exec(
 		sqlStmt,
-		incomingWarning.WarningID,
-		incomingWarning.Value,
-		incomingWarning.Time,
+		id,
+		1,
+		time.Now(),
 	)
-	fmt.Println(incomingWarning.WarningID)
+
 	if err != nil {
 		panic(err.Error())
 	}
+	var lastInsertedID int
+
+    err2 := SQLDB.QueryRow("SELECT LAST_INSERT_ID() FROM testdb").Scan(&lastInsertedID)
+
+	if err2 != nil {
+		panic(err.Error())
+	}
+	fmt.Println(lastInsertedID)
 }

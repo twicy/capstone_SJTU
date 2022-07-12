@@ -4,7 +4,9 @@
 // otherwise, it means this struct will be used INSIDE this package (package main),
 // which is the case in model.go
 package main
-
+import (
+	"time"
+)
 type Warning struct {
 	ID                  int    `json:"id"`
 	Label_Chinese       string `json:"label_Chinese"`
@@ -17,7 +19,7 @@ type Warning struct {
 	Machine_obj_Chinese string `json:"machine_obj_Chinese"`
 	Machine_obj_English string `json:"machine_obj_English"`
 	Value               int    `json:"value"`
-	Time                string `json:"time"`
+	Time                time.Time `json:"time" time_format:"unix"`
 }
 
 type WarningUpdate struct {
@@ -31,11 +33,5 @@ type album struct {
 	Title  string  `json:"title"`
 	Artist string  `json:"artist"`
 	Price  float64 `json:"price"`
-}
-
-type History struct {
-	WarningID           int    `json:"warning_id"`
-	Value               int    `json:"value"`
-	Time                string `json:"time"`
 }
 

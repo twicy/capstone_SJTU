@@ -1,100 +1,59 @@
-2022-07-12 19:32:38,956 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 19:32:38,957 Number of queries in database testdb:37
-2022-07-12 19:32:38,958 MySQL connection is closed
-2022-07-12 19:32:38,958 Using randome number: 21
-2022-07-12 19:32:38,962 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 19:32:38,966 Starting new HTTP connection (1): localhost:8080
-2022-07-12 19:32:38,969 http://localhost:8080 "POST /api/generate_warnings HTTP/1.1" 400 90
-2022-07-12 19:32:38,970 receiving the following results from api server:
-2022-07-12 19:32:38,970 {"error":"json: cannot unmarshal number into Go struct field History.time of type string"}
-2022-07-12 19:32:38,971 MySQL connection is closed
+2022-07-12 22:45:09,124 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
+2022-07-12 22:45:09,126 Number of queries in database testdb:37
+2022-07-12 22:45:09,127 MySQL connection is closed
+2022-07-12 22:45:09,127 Using randome number: 3
+2022-07-12 22:45:09,131 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
+2022-07-12 22:45:09,134 Starting new HTTP connection (1): localhost:8080
+2022-07-12 22:45:09,168 http://localhost:8080 "POST /api/generate_warnings/3 HTTP/1.1" 500 0
+2022-07-12 22:45:09,169 receiving the following results from api server:
+2022-07-12 22:45:09,170 
+2022-07-12 22:45:09,171 MySQL connection is closed
 
-2022-07-12 19:32:39,459 Using randome number: 17
-2022-07-12 19:32:39,472 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 19:32:39,476 Starting new HTTP connection (1): localhost:8080
-2022-07-12 19:32:39,478 http://localhost:8080 "POST /api/generate_warnings HTTP/1.1" 400 90
-2022-07-12 19:32:39,480 receiving the following results from api server:
-2022-07-12 19:32:39,482 {"error":"json: cannot unmarshal number into Go struct field History.time of type string"}
-2022-07-12 19:32:39,484 MySQL connection is closed
+2022-07-12 22:45:09,628 Using randome number: 28
+2022-07-12 22:45:09,637 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
+2022-07-12 22:45:09,640 Starting new HTTP connection (1): localhost:8080
+2022-07-12 22:45:09,672 http://localhost:8080 "POST /api/generate_warnings/28 HTTP/1.1" 500 0
+2022-07-12 22:45:09,674 receiving the following results from api server:
+2022-07-12 22:45:09,675 
+2022-07-12 22:45:09,676 MySQL connection is closed
 
-2022-07-12 19:32:39,960 Using randome number: 35
-2022-07-12 19:32:39,964 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 19:32:39,965 Starting new HTTP connection (1): localhost:8080
-2022-07-12 19:32:39,966 http://localhost:8080 "POST /api/generate_warnings HTTP/1.1" 400 90
-2022-07-12 19:32:39,967 receiving the following results from api server:
-2022-07-12 19:32:39,968 {"error":"json: cannot unmarshal number into Go struct field History.time of type string"}
-2022-07-12 19:32:39,968 MySQL connection is closed
+2022-07-12 22:45:10,129 Using randome number: 34
+2022-07-12 22:45:10,133 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
+2022-07-12 22:45:10,134 Starting new HTTP connection (1): localhost:8080
+2022-07-12 22:45:10,147 http://localhost:8080 "POST /api/generate_warnings/34 HTTP/1.1" 500 0
+2022-07-12 22:45:10,148 receiving the following results from api server:
+2022-07-12 22:45:10,149 
+2022-07-12 22:45:10,149 MySQL connection is closed
 
-2022-07-12 19:32:40,461 Using randome number: 7
-2022-07-12 19:32:40,480 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 19:32:40,486 Starting new HTTP connection (1): localhost:8080
-2022-07-12 19:32:40,491 http://localhost:8080 "POST /api/generate_warnings HTTP/1.1" 400 90
-2022-07-12 19:32:40,494 receiving the following results from api server:
-2022-07-12 19:32:40,496 {"error":"json: cannot unmarshal number into Go struct field History.time of type string"}
-2022-07-12 19:32:40,498 MySQL connection is closed
+2022-07-12 22:45:10,631 Using randome number: 27
+2022-07-12 22:45:10,648 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
+2022-07-12 22:45:10,654 Starting new HTTP connection (1): localhost:8080
+2022-07-12 22:45:10,691 http://localhost:8080 "POST /api/generate_warnings/27 HTTP/1.1" 500 0
+2022-07-12 22:45:10,692 receiving the following results from api server:
+2022-07-12 22:45:10,693 
+2022-07-12 22:45:10,695 MySQL connection is closed
 
-2022-07-12 19:32:40,961 Using randome number: 7
-2022-07-12 19:32:40,967 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 19:32:40,969 Starting new HTTP connection (1): localhost:8080
-2022-07-12 19:32:40,970 http://localhost:8080 "POST /api/generate_warnings HTTP/1.1" 400 90
-2022-07-12 19:32:40,972 receiving the following results from api server:
-2022-07-12 19:32:40,973 {"error":"json: cannot unmarshal number into Go struct field History.time of type string"}
-2022-07-12 19:32:40,974 MySQL connection is closed
+2022-07-12 22:45:11,132 Using randome number: 10
+2022-07-12 22:45:11,153 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
+2022-07-12 22:45:11,160 Starting new HTTP connection (1): localhost:8080
+2022-07-12 22:45:11,187 http://localhost:8080 "POST /api/generate_warnings/10 HTTP/1.1" 500 0
+2022-07-12 22:45:11,189 receiving the following results from api server:
+2022-07-12 22:45:11,190 
+2022-07-12 22:45:11,191 MySQL connection is closed
 
-2022-07-12 19:32:41,462 Using randome number: 24
-2022-07-12 19:32:41,473 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 19:32:41,476 Starting new HTTP connection (1): localhost:8080
-2022-07-12 19:32:41,478 http://localhost:8080 "POST /api/generate_warnings HTTP/1.1" 400 90
-2022-07-12 19:32:41,480 receiving the following results from api server:
-2022-07-12 19:32:41,481 {"error":"json: cannot unmarshal number into Go struct field History.time of type string"}
-2022-07-12 19:32:41,482 MySQL connection is closed
+2022-07-12 22:45:11,634 Using randome number: 8
+2022-07-12 22:45:11,655 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
+2022-07-12 22:45:11,661 Starting new HTTP connection (1): localhost:8080
+2022-07-12 22:45:11,714 http://localhost:8080 "POST /api/generate_warnings/8 HTTP/1.1" 500 0
+2022-07-12 22:45:11,716 receiving the following results from api server:
+2022-07-12 22:45:11,716 
+2022-07-12 22:45:11,718 MySQL connection is closed
 
-2022-07-12 19:32:41,963 Using randome number: 2
-2022-07-12 19:32:41,968 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 19:32:41,970 Starting new HTTP connection (1): localhost:8080
-2022-07-12 19:32:41,971 http://localhost:8080 "POST /api/generate_warnings HTTP/1.1" 400 90
-2022-07-12 19:32:41,972 receiving the following results from api server:
-2022-07-12 19:32:41,972 {"error":"json: cannot unmarshal number into Go struct field History.time of type string"}
-2022-07-12 19:32:41,973 MySQL connection is closed
-
-2022-07-12 19:32:42,464 Using randome number: 13
-2022-07-12 19:32:42,475 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 19:32:42,478 Starting new HTTP connection (1): localhost:8080
-2022-07-12 19:32:42,481 http://localhost:8080 "POST /api/generate_warnings HTTP/1.1" 400 90
-2022-07-12 19:32:42,483 receiving the following results from api server:
-2022-07-12 19:32:42,484 {"error":"json: cannot unmarshal number into Go struct field History.time of type string"}
-2022-07-12 19:32:42,485 MySQL connection is closed
-
-2022-07-12 19:32:42,964 Using randome number: 3
-2022-07-12 19:32:42,973 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 19:32:42,976 Starting new HTTP connection (1): localhost:8080
-2022-07-12 19:32:42,979 http://localhost:8080 "POST /api/generate_warnings HTTP/1.1" 400 90
-2022-07-12 19:32:42,981 receiving the following results from api server:
-2022-07-12 19:32:42,981 {"error":"json: cannot unmarshal number into Go struct field History.time of type string"}
-2022-07-12 19:32:42,983 MySQL connection is closed
-
-2022-07-12 19:32:43,465 Using randome number: 18
-2022-07-12 19:32:43,469 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 19:32:43,470 Starting new HTTP connection (1): localhost:8080
-2022-07-12 19:32:43,472 MySQL connection is closed
-
-2022-07-12 19:32:43,965 Using randome number: 22
-2022-07-12 19:32:43,974 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 19:32:43,977 Starting new HTTP connection (1): localhost:8080
-2022-07-12 19:32:43,979 MySQL connection is closed
-
-2022-07-12 19:32:44,466 Using randome number: 11
-2022-07-12 19:32:44,474 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 19:32:44,477 Starting new HTTP connection (1): localhost:8080
-2022-07-12 19:32:44,478 MySQL connection is closed
-
-2022-07-12 19:32:44,967 Using randome number: 27
-2022-07-12 19:32:44,978 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 19:32:44,982 Starting new HTTP connection (1): localhost:8080
-2022-07-12 19:32:44,984 MySQL connection is closed
-
-2022-07-12 19:32:45,467 Using randome number: 27
-2022-07-12 19:32:45,471 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 19:32:45,473 Starting new HTTP connection (1): localhost:8080
-2022-07-12 19:32:45,474 MySQL connection is closed
+2022-07-12 22:45:12,136 Using randome number: 5
+2022-07-12 22:45:12,155 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
+2022-07-12 22:45:12,159 Starting new HTTP connection (1): localhost:8080
+2022-07-12 22:45:12,195 http://localhost:8080 "POST /api/generate_warnings/5 HTTP/1.1" 500 0
+2022-07-12 22:45:12,197 receiving the following results from api server:
+2022-07-12 22:45:12,198 
+2022-07-12 22:45:12,199 MySQL connection is closed
 
