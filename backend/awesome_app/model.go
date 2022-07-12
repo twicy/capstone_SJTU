@@ -33,3 +33,9 @@ type album struct {
 	Price  float64 `json:"price"`
 }
 
+type History struct {
+	WarningID           int    `json:"warning_id"`
+	Value               int    `json:"value"`
+	Time                string `json:"time"`
+}
+

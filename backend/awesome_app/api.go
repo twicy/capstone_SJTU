@@ -51,5 +51,21 @@ func putWarning(c *gin.Context) {
 }
 
 func generateWarnings(c *gin.Context) {
+	// Note that history here does not have ID, but only warning_id
+	// did not assign ID here for the sake of concurrency
+	var incomingWarning History
+	if err := c.ShouldBindJSON(&incomingWarning); err != nil {
+		fmt.Println(incomingWarning.WarningID)
+        c.JSON(http.StatusBadRequest, errorResponse(err))
+        return
+    }
+	insertWarningSQL(incomingWarning)
+	// modify this: need to store this in the redis cache with if_new = 1
+	c.IndentedJSON(http.StatusOK, gin.H{
+		"message": fmt.Sprintf("Successfully inserted a warning with warning id:", incomingWarning.WarningID),
+	})
+}
 
+func errorResponse(err error) gin.H {
+    return gin.H{"error": err.Error()}
 }

@@ -4,7 +4,7 @@ package main
 
 import (
 	"database/sql"
-
+	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -80,3 +80,23 @@ func putWarningSQL(warup WarningUpdate) {
 	}
 }
 
+
+func insertWarningSQL(incomingWarning History) {
+	sqlStmt := `
+	INSERT INTO history (
+		warning_id,
+		value,
+		time)
+	VALUES (?,?,?);`
+	
+	_, err := SQLDB.Exec(
+		sqlStmt,
+		incomingWarning.WarningID,
+		incomingWarning.Value,
+		incomingWarning.Time,
+	)
+	fmt.Println(incomingWarning.WarningID)
+	if err != nil {
+		panic(err.Error())
+	}
+}
