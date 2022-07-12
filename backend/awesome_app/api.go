@@ -49,3 +49,7 @@ func putWarning(c *gin.Context) {
 		"message": fmt.Sprintf("Successfully update to warning id %d", warup.ID),
 	})
 }
+
+func generateWarnings(c *gin.Context) {
+
+}

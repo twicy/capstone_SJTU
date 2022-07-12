@@ -31,6 +31,8 @@ func main() {
 	router.GET("/warnings/:id", getWarningByID)
 	router.GET("/warnings", getWarningAll)
 	router.PUT("/warnings/:id", putWarning)
+
+	router.POST("/api/generate_warnings", generateWarnings)
 	router.Run(":8080")
 
 }
