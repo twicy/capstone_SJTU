@@ -5,6 +5,7 @@ package main
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"strconv"
 
 	"github.com/go-redis/redis/v9"
@@ -83,4 +84,45 @@ func deleteWarningByIDRedis(id int) {
 	if err != nil {
 		panic(err.Error())
 	}
+}
+
+// structure of redis:
+// {id:{warning_id:int, if_newest:int, value:int}}
+
+func insertWarningRedis(warinsert WarningInsert) {
+	id := warinsert.ID
+	id_str := strconv.Itoa(id)
+	warning_id := warinsert.Warning_ID
+	_, err := redisDB.HSet(Ctx, id_str, "warning_id", warning_id, "if_newest", 1, "value", 1).Result()
+	if err != nil {
+		panic(err.Error())
+	}
+
+}
+
+// ref: https://redis.uptrace.dev/guide/get-all-keys.html#iterating-over-keys
+func getNewWarningsRedis() (newwars []Warning) {
+	iter := redisDB.Scan(Ctx, 0, "*", 0).Iterator()
+	for iter.Next(Ctx) {
+		key := iter.Val()
+		if_newest, err := redisDB.HGet(Ctx, key, "if_newest").Result()
+		if err != nil {
+			panic(err)
+		}
+		if if_newest == "1" {
+			warning_id, _ := redisDB.HGet(Ctx, key, "warning_id").Result()
+			warning_id_int, _ := strconv.Atoi(warning_id)
+			newwar := getWarningByIDSQL(warning_id_int)
+			//set if_newest to 0
+			redisDB.HSet(Ctx, key, "warning_id", warning_id, "if_newest", 0, "value", 1)
+			newwar.Value = 1
+			newwars = append(newwars, newwar)
+			fmt.Println(newwar)
+		}
+
+	}
+	if err := iter.Err(); err != nil {
+		panic(err)
+	}
+	return newwars
 }

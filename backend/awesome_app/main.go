@@ -13,7 +13,7 @@ func main() {
 	InitSQL()
 	// init redis connection
 	InitRedis()
-	InitDataRedis()
+	//InitDataRedis()
 
 	router := gin.Default()
 	router.Use(cors.New(cors.Config{
@@ -30,6 +30,7 @@ func main() {
 	router.GET("/albums", getAlbums)
 	router.GET("/warnings/:id", getWarningByID)
 	router.GET("/warnings", getWarningAll)
+	router.GET("/warnings/new", getNewWarnings)
 	router.PUT("/warnings/:id", putWarning)
 
 	router.POST("/api/generate_warnings/:id", generateWarnings)

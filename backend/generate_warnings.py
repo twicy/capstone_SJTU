@@ -19,6 +19,17 @@ logging.basicConfig(filename="generate_warnings.log",
 					filemode='w')
 logger=logging.getLogger() 
 logger.setLevel(logging.DEBUG)
+id_set = set()
+id = 0
+
+def getNewestID(cursor):
+    cursor.execute("SELECT id FROM history ORDER BY id DESC LIMIT 1")
+    myresult = cursor.fetchone()
+    if not myresult:
+        return 1
+    else:
+        return myresult[0] + 1
+
 
 
 def repeater(rand):
@@ -32,8 +43,9 @@ def repeater(rand):
             db_Info = connection.get_server_info()
             logger.debug("Connected to MySQL Server version " + str(db_Info))
             cursor = connection.cursor()
+            id = getNewestID(cursor)
             temp_str = url_str + "/" + str(rand)
-            r = requests.post(url=temp_str, data=json.dumps({}))
+            r = requests.post(url=temp_str, data=json.dumps({"id":id, "warning_id":rand}))
             logger.debug("receiving the following results from api server:")
             logger.debug(r.text)
 
@@ -71,6 +83,7 @@ finally:
 def generate():
   threading.Timer(0.5, generate).start()
   rand = randint(1, warnings_total - 1)
+
   repeater(rand)
 
 generate()

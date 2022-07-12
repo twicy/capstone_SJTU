@@ -4,9 +4,9 @@ package main
 
 import (
 	"database/sql"
-	"fmt"
-	_ "github.com/go-sql-driver/mysql"
 	"time"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 // sql connection as a global variable
@@ -81,18 +81,19 @@ func putWarningSQL(warup WarningUpdate) {
 	}
 }
 
-
-func insertWarningSQL(id int) {
+func insertWarningSQL(warinsert WarningInsert) {
 	sqlStmt := `
 	INSERT INTO history (
+		id,
 		warning_id,
 		value,
 		time)
-	VALUES (?,?,?);`
-	
+	VALUES (?,?,?,?);`
+
 	_, err := SQLDB.Exec(
 		sqlStmt,
-		id,
+		warinsert.ID,
+		warinsert.Warning_ID,
 		1,
 		time.Now(),
 	)
@@ -100,12 +101,5 @@ func insertWarningSQL(id int) {
 	if err != nil {
 		panic(err.Error())
 	}
-	var lastInsertedID int
 
-    err2 := SQLDB.QueryRow("SELECT LAST_INSERT_ID() FROM testdb").Scan(&lastInsertedID)
-
-	if err2 != nil {
-		panic(err.Error())
-	}
-	fmt.Println(lastInsertedID)
 }
