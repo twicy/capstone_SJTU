@@ -59,7 +59,7 @@ func generateWarnings(c *gin.Context) {
 		panic(err.Error())
 	}
 	fmt.Println(id)
-	//go insertWarningRedis(warinsert)
+	go insertWarningRedis(warinsert)
 	insertWarningSQL(warinsert)
 	c.IndentedJSON(http.StatusOK, gin.H{
 		"message": fmt.Sprintf("Successfully inserted a new warning with warning id %s:", id_str),
@@ -76,8 +76,7 @@ func errorResponse(err error) gin.H {
 	return gin.H{"error": err.Error()}
 }
 
-
-func getHistory(c *gin.Context){
+func getHistory(c *gin.Context) {
 	n_str := c.Query("num")
 	n, _ := strconv.Atoi(n_str)
 	results := getHistorySQL(n)

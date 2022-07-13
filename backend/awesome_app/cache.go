@@ -101,7 +101,7 @@ func insertWarningRedis(warinsert WarningInsert) {
 }
 
 // ref: https://redis.uptrace.dev/guide/get-all-keys.html#iterating-over-keys
-func getNewWarningsRedis() (newwars []Warning) {
+func getNewWarningsRedis() (newAltraWars []AltraWarning) {
 	iter := redisDB.Scan(Ctx, 0, "*", 0).Iterator()
 	for iter.Next(Ctx) {
 		key := iter.Val()
@@ -116,12 +116,27 @@ func getNewWarningsRedis() (newwars []Warning) {
 			//set if_newest to 0
 			redisDB.HSet(Ctx, key, "warning_id", warning_id, "if_newest", 0, "value", 1)
 			newwar.Value = 1
-			newwars = append(newwars, newwar)
+			var altWar AltraWarning
+			key_int, _ := strconv.Atoi(key)
+			altWar.ID = key_int
+			altWar.Warning_ID = newwar.ID
+			altWar.Label_Chinese = newwar.Label_Chinese
+			altWar.Label_English = newwar.Label_English
+			altWar.Function_name = newwar.Function_name
+			altWar.Function_Chinese = newwar.Function_Chinese
+			altWar.Function_English = newwar.Function_English
+			altWar.Group_label_Chinese = newwar.Group_label_Chinese
+			altWar.Group_label_English = newwar.Group_label_English
+			altWar.Machine_obj_Chinese = newwar.Machine_obj_Chinese
+			altWar.Machine_obj_English = newwar.Machine_obj_English
+			altWar.Value = newwar.Value
+			altWar.Time = newwar.Time
+			newAltraWars = append(newAltraWars, altWar)
 		}
 
 	}
 	if err := iter.Err(); err != nil {
 		panic(err)
 	}
-	return newwars
+	return newAltraWars
 }
