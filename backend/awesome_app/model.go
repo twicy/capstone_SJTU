@@ -36,3 +36,11 @@ type WarningInsert struct {
 	ID         int `json:"id"`
 	Warning_ID int `json:"warning_id"`
 }
+
+
+type History struct {
+	ID         int `json:"id"`
+	Warning_ID int `json:"warning_id"`
+	Value	   int `json:"value"`
+	Time	   time.Time `json:"time" time_format:"unix"`
+}

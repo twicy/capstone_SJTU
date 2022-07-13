@@ -1,103 +1,103 @@
-2022-07-12 21:16:04,640 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 21:16:04,642 Number of queries in database testdb:37
-2022-07-12 21:16:04,644 MySQL connection is closed
-2022-07-12 21:16:04,644 Using randome number: 36
-2022-07-12 21:16:04,654 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 21:16:04,658 Starting new HTTP connection (1): localhost:8080
-2022-07-12 21:16:04,664 http://localhost:8080 "POST /api/generate_warnings/36 HTTP/1.1" 200 76
-2022-07-12 21:16:04,664 receiving the following results from api server:
-2022-07-12 21:16:04,664 {
-    "message": "Successfully inserted a new warning with warning id 36:"
+2022-07-13 15:41:59,744 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
+2022-07-13 15:41:59,746 Number of queries in database testdb:37
+2022-07-13 15:41:59,746 MySQL connection is closed
+2022-07-13 15:41:59,747 Using randome number: 5
+2022-07-13 15:41:59,750 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
+2022-07-13 15:41:59,754 Starting new HTTP connection (1): localhost:8080
+2022-07-13 15:41:59,773 http://localhost:8080 "POST /api/generate_warnings/5 HTTP/1.1" 200 75
+2022-07-13 15:41:59,774 receiving the following results from api server:
+2022-07-13 15:41:59,775 {
+    "message": "Successfully inserted a new warning with warning id 5:"
 }
-2022-07-12 21:16:04,665 MySQL connection is closed
+2022-07-13 15:41:59,775 MySQL connection is closed
 
-2022-07-12 21:16:05,145 Using randome number: 32
-2022-07-12 21:16:05,155 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 21:16:05,157 Starting new HTTP connection (1): localhost:8080
-2022-07-12 21:16:05,162 http://localhost:8080 "POST /api/generate_warnings/32 HTTP/1.1" 200 76
-2022-07-12 21:16:05,162 receiving the following results from api server:
-2022-07-12 21:16:05,163 {
-    "message": "Successfully inserted a new warning with warning id 32:"
+2022-07-13 15:42:00,248 Using randome number: 21
+2022-07-13 15:42:00,255 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
+2022-07-13 15:42:00,259 Starting new HTTP connection (1): localhost:8080
+2022-07-13 15:42:00,280 http://localhost:8080 "POST /api/generate_warnings/21 HTTP/1.1" 200 76
+2022-07-13 15:42:00,281 receiving the following results from api server:
+2022-07-13 15:42:00,282 {
+    "message": "Successfully inserted a new warning with warning id 21:"
 }
-2022-07-12 21:16:05,164 MySQL connection is closed
+2022-07-13 15:42:00,282 MySQL connection is closed
 
-2022-07-12 21:16:05,646 Using randome number: 20
-2022-07-12 21:16:05,656 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 21:16:05,658 Starting new HTTP connection (1): localhost:8080
-2022-07-12 21:16:05,663 http://localhost:8080 "POST /api/generate_warnings/20 HTTP/1.1" 200 76
-2022-07-12 21:16:05,663 receiving the following results from api server:
-2022-07-12 21:16:05,663 {
+2022-07-13 15:42:00,748 Using randome number: 12
+2022-07-13 15:42:00,752 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
+2022-07-13 15:42:00,754 Starting new HTTP connection (1): localhost:8080
+2022-07-13 15:42:00,762 http://localhost:8080 "POST /api/generate_warnings/12 HTTP/1.1" 200 76
+2022-07-13 15:42:00,764 receiving the following results from api server:
+2022-07-13 15:42:00,764 {
+    "message": "Successfully inserted a new warning with warning id 12:"
+}
+2022-07-13 15:42:00,765 MySQL connection is closed
+
+2022-07-13 15:42:01,248 Using randome number: 6
+2022-07-13 15:42:01,252 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
+2022-07-13 15:42:01,254 Starting new HTTP connection (1): localhost:8080
+2022-07-13 15:42:01,274 http://localhost:8080 "POST /api/generate_warnings/6 HTTP/1.1" 200 75
+2022-07-13 15:42:01,276 receiving the following results from api server:
+2022-07-13 15:42:01,276 {
+    "message": "Successfully inserted a new warning with warning id 6:"
+}
+2022-07-13 15:42:01,277 MySQL connection is closed
+
+2022-07-13 15:42:01,749 Using randome number: 29
+2022-07-13 15:42:01,755 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
+2022-07-13 15:42:01,757 Starting new HTTP connection (1): localhost:8080
+2022-07-13 15:42:01,775 http://localhost:8080 "POST /api/generate_warnings/29 HTTP/1.1" 200 76
+2022-07-13 15:42:01,776 receiving the following results from api server:
+2022-07-13 15:42:01,777 {
+    "message": "Successfully inserted a new warning with warning id 29:"
+}
+2022-07-13 15:42:01,778 MySQL connection is closed
+
+2022-07-13 15:42:02,250 Using randome number: 20
+2022-07-13 15:42:02,257 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
+2022-07-13 15:42:02,261 Starting new HTTP connection (1): localhost:8080
+2022-07-13 15:42:02,273 http://localhost:8080 "POST /api/generate_warnings/20 HTTP/1.1" 200 76
+2022-07-13 15:42:02,276 receiving the following results from api server:
+2022-07-13 15:42:02,276 {
     "message": "Successfully inserted a new warning with warning id 20:"
 }
-2022-07-12 21:16:05,664 MySQL connection is closed
+2022-07-13 15:42:02,277 MySQL connection is closed
 
-2022-07-12 21:16:06,147 Using randome number: 30
-2022-07-12 21:16:06,157 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 21:16:06,159 Starting new HTTP connection (1): localhost:8080
-2022-07-12 21:16:06,163 http://localhost:8080 "POST /api/generate_warnings/30 HTTP/1.1" 200 76
-2022-07-12 21:16:06,164 receiving the following results from api server:
-2022-07-12 21:16:06,164 {
-    "message": "Successfully inserted a new warning with warning id 30:"
+2022-07-13 15:42:02,750 Using randome number: 19
+2022-07-13 15:42:02,754 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
+2022-07-13 15:42:02,756 Starting new HTTP connection (1): localhost:8080
+2022-07-13 15:42:02,775 http://localhost:8080 "POST /api/generate_warnings/19 HTTP/1.1" 200 76
+2022-07-13 15:42:02,776 receiving the following results from api server:
+2022-07-13 15:42:02,776 {
+    "message": "Successfully inserted a new warning with warning id 19:"
 }
-2022-07-12 21:16:06,165 MySQL connection is closed
+2022-07-13 15:42:02,777 MySQL connection is closed
 
-2022-07-12 21:16:06,648 Using randome number: 3
-2022-07-12 21:16:06,659 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 21:16:06,661 Starting new HTTP connection (1): localhost:8080
-2022-07-12 21:16:06,665 http://localhost:8080 "POST /api/generate_warnings/3 HTTP/1.1" 200 75
-2022-07-12 21:16:06,666 receiving the following results from api server:
-2022-07-12 21:16:06,666 {
-    "message": "Successfully inserted a new warning with warning id 3:"
+2022-07-13 15:42:03,251 Using randome number: 27
+2022-07-13 15:42:03,256 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
+2022-07-13 15:42:03,258 Starting new HTTP connection (1): localhost:8080
+2022-07-13 15:42:03,275 http://localhost:8080 "POST /api/generate_warnings/27 HTTP/1.1" 200 76
+2022-07-13 15:42:03,276 receiving the following results from api server:
+2022-07-13 15:42:03,277 {
+    "message": "Successfully inserted a new warning with warning id 27:"
 }
-2022-07-12 21:16:06,667 MySQL connection is closed
+2022-07-13 15:42:03,278 MySQL connection is closed
 
-2022-07-12 21:16:07,149 Using randome number: 20
-2022-07-12 21:16:07,159 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 21:16:07,161 Starting new HTTP connection (1): localhost:8080
-2022-07-12 21:16:07,165 http://localhost:8080 "POST /api/generate_warnings/20 HTTP/1.1" 200 76
-2022-07-12 21:16:07,165 receiving the following results from api server:
-2022-07-12 21:16:07,165 {
-    "message": "Successfully inserted a new warning with warning id 20:"
+2022-07-13 15:42:03,751 Using randome number: 24
+2022-07-13 15:42:03,755 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
+2022-07-13 15:42:03,757 Starting new HTTP connection (1): localhost:8080
+2022-07-13 15:42:03,776 http://localhost:8080 "POST /api/generate_warnings/24 HTTP/1.1" 200 76
+2022-07-13 15:42:03,777 receiving the following results from api server:
+2022-07-13 15:42:03,777 {
+    "message": "Successfully inserted a new warning with warning id 24:"
 }
-2022-07-12 21:16:07,166 MySQL connection is closed
+2022-07-13 15:42:03,778 MySQL connection is closed
 
-2022-07-12 21:16:07,650 Using randome number: 1
-2022-07-12 21:16:07,661 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 21:16:07,663 Starting new HTTP connection (1): localhost:8080
-2022-07-12 21:16:07,667 http://localhost:8080 "POST /api/generate_warnings/1 HTTP/1.1" 200 75
-2022-07-12 21:16:07,667 receiving the following results from api server:
-2022-07-12 21:16:07,668 {
-    "message": "Successfully inserted a new warning with warning id 1:"
+2022-07-13 15:42:04,252 Using randome number: 2
+2022-07-13 15:42:04,255 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
+2022-07-13 15:42:04,257 Starting new HTTP connection (1): localhost:8080
+2022-07-13 15:42:04,276 http://localhost:8080 "POST /api/generate_warnings/2 HTTP/1.1" 200 75
+2022-07-13 15:42:04,277 receiving the following results from api server:
+2022-07-13 15:42:04,277 {
+    "message": "Successfully inserted a new warning with warning id 2:"
 }
-2022-07-12 21:16:07,669 MySQL connection is closed
-
-2022-07-12 21:16:08,151 Using randome number: 7
-2022-07-12 21:16:08,161 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 21:16:08,163 Starting new HTTP connection (1): localhost:8080
-2022-07-12 21:16:08,166 http://localhost:8080 "POST /api/generate_warnings/7 HTTP/1.1" 200 75
-2022-07-12 21:16:08,167 receiving the following results from api server:
-2022-07-12 21:16:08,167 {
-    "message": "Successfully inserted a new warning with warning id 7:"
-}
-2022-07-12 21:16:08,168 MySQL connection is closed
-
-2022-07-12 21:16:08,653 Using randome number: 20
-2022-07-12 21:16:08,662 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 21:16:08,664 Starting new HTTP connection (1): localhost:8080
-2022-07-12 21:16:08,667 http://localhost:8080 "POST /api/generate_warnings/20 HTTP/1.1" 200 76
-2022-07-12 21:16:08,668 receiving the following results from api server:
-2022-07-12 21:16:08,668 {
-    "message": "Successfully inserted a new warning with warning id 20:"
-}
-2022-07-12 21:16:08,669 MySQL connection is closed
-
-2022-07-12 21:16:09,154 Using randome number: 30
-2022-07-12 21:16:09,163 Connected to MySQL Server version 8.0.29-0ubuntu0.20.04.3
-2022-07-12 21:16:09,166 Starting new HTTP connection (1): localhost:8080
-2022-07-12 21:16:09,169 http://localhost:8080 "POST /api/generate_warnings/30 HTTP/1.1" 200 76
-2022-07-12 21:16:09,170 receiving the following results from api server:
-2022-07-12 21:16:09,170 {
-    "message": "Successfully inserted a new warning with warning id 30:"
-}
-2022-07-12 21:16:09,171 MySQL connection is closed
+2022-07-13 15:42:04,278 MySQL connection is closed
 

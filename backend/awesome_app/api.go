@@ -77,3 +77,11 @@ func getNewWarnings(c *gin.Context) {
 func errorResponse(err error) gin.H {
 	return gin.H{"error": err.Error()}
 }
+
+
+func getHistory(c *gin.Context){
+	n_str := c.Param("num")
+	n, _ := strconv.Atoi(n_str)
+	wars := getHistorySQL(n)
+	c.IndentedJSON(http.StatusOK, wars)
+}

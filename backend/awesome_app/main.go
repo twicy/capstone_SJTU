@@ -32,7 +32,7 @@ func main() {
 	router.GET("/warnings", getWarningAll)
 	router.GET("/warnings/new", getNewWarnings)
 	router.PUT("/warnings/:id", putWarning)
-
+	router.GET("/api/history/:num", getHistory)
 	router.POST("/api/generate_warnings/:id", generateWarnings)
 	router.Run(":8080")
 

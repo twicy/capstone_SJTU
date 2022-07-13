@@ -103,3 +103,34 @@ func insertWarningSQL(warinsert WarningInsert) {
 	}
 
 }
+
+//given an integer, this function returns that many records if possible
+//return an array of warnings where the id here is warning_id, namely warning type
+func getHistorySQL(n int)(wars []Warning) {
+	sqlStmt := `SELECT * FROM history ORDER BY id DESC LIMIT ?;`
+
+	rows, err := SQLDB.Query(sqlStmt, n)
+
+	if err != nil {
+		panic(err.Error())
+	}
+
+	for rows.Next() {
+		var hist History
+		err := rows.Scan(
+			&hist.ID,
+			&hist.Warning_ID,
+			&hist.Value,
+			&hist.Time,
+		)
+		if err != nil {
+			panic(err.Error())
+		}
+		
+		var war Warning = getWarningByIDSQL(hist.Warning_ID) 
+		war.Time = hist.Time
+		war.Value = hist.Value
+		wars = append(wars, war)
+	}
+	return wars
+}
