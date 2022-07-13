@@ -34,7 +34,153 @@ CREATE TABLE `history` (
   `warning_id` int NOT NULL,
   `value` int DEFAULT '0',
   `time` datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY(`warning_id`)
-      REFERENCES warning(`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+/*schema*/
+DROP TABLE IF EXISTS `production`;
+SET character_set_client = utf8mb4;
+CREATE TABLE `production` (
+  `id` int not NULL AUTO_INCREMENT,
+  `label_Chinese` varchar(255) DEFAULT NULL,	
+  `label_English` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*data*/
+LOCK TABLES `production` WRITE;
+INSERT INTO `production` (label_Chinese, label_English)
+VALUES 
+('手动排空的有效盒模',	'MANUALLY EMPTIED VALID POCKETS'),
+('不进行生产时之机器转数',	'MACHINE CYCLES RUNNING EMPTY'),
+('生产数据统计免除时之机器转数',	'MACHINE CYCLES WITH PROD. DATA DISABLED'),
+('烟包实际产量',	'REAL PACKET PRODUCTION'),
+('产品被剔除',	'REJECTED PRODUCTION'),
+('下梁剔除的烟包',	'PACKETS REJECTED LOWER BEAM'),
+('上梁剔除的烟包',	'PACKETS REJECTED UPPER BEAM'),
+('第三轮烟包已剔除',	'PACKETS REJECTED AT 3RD WHEEL'),
+('已使用盒片叠数',	'NUMBER OF BLANK STACKS USED'),
+('已使用之铝箔纸卷数',	'NUMBER OF FOIL REELS USED'),
+('已使用之内框纸卷数',	'NUMBER OF INNER0FRAME REELS USED'),
+('盒片空白而剔除',	'REJECTS DUE TO BLANKS WITHOUT PRINT'),
+('剔除：第二鼓轮上无盒片／不齐',	'REJECTION: NO BLANK/DISALIGN ON 2ND DRUM'),
+('剔除：第三鼓轮上第一前盒片耳',	'REJECTS: 1ST FRONT BLANK0EAR DRUM3'),
+('剔除：第三鼓轮上第二前盒片耳',	'REJECTS: 2ND FRONT BLANK0EAR DRUM3'),
+('剔除：第三鼓轮上第一后盒片耳',	'REJECTS: 1ST REAR BLANK0EAR 0 DRUM3'),
+('剔除：第三鼓轮上第二后盒片耳',	'REJECTS: 2ND REAR BLANK0EAR 0 DRUM3'),
+('第三鼓轮皮带上缺盒片产生的剔除',	'REJECTS FOR BLANK ABS. ON 3RD DRUM BELT'),
+('裹包时间过长而剔除',	'REJECTS DUE TO EXTENDED TIME FOR WRAP'),
+('涂胶器接合超出相位的剔除',	'REJECTS FOR GLUER ENGAGE OUT OF PHASE'),
+('盒片涂胶不全而剔除',	'REJECTS DUE TO INCOMPLETELY GLUED BLANKS'),
+('高位出口电机复位引起的剔除次数',	'REJECTIONS FROM MOTOR HOMING 0 HIGH EXIT'),
+('出口阻塞而剔除',	'REJECTIONS DUE TO EXIT JAM'),
+('下部干燥通道剔除效用功能',	'EXTRA REJECTS AFTER WRAP WHEEL EMPTYING'),
+('堵塞产生的下皮带剔除／马达故障',	'LOWER BELT REJECTS DUE TO JAM/MOTOR FAIL'),
+('未要求的下梁烟包剔除',	'LOWER BEAM PACKET REJECTS NOT REQUESTED'),
+('堵塞产生的上皮带剔除／马达故障',	'UPPER BELT REJECTS DUE TO JAM/MOTOR FAIL'),
+('手动剔除：偏移的铝箔纸',	'MANUAL REJECTIONS 0 DISALIGNED FOIL'),
+('推进器脱离而剔除',	'REJECTIONS DUE TO PUSHER RELEASE'),
+('鼓轮上无存在内框纸时剔除物数量',	'NO.REJECTS DUE TO NO INNER0FRAME ON DRUM'),
+('内框纸上存在带子的剔除',	'REJ. FOR TAPE PRESENCE ON INNERFRAME'),
+('第二轮缺铝箔纸而产生的剔除',	'REJECTS DUE TO 2ND WHEEL FOIL ABSENCE'),
+('第二轮铝箔纸不齐而产生的剔除',	'REJECTS DUE TO 2ND WHEEL FOIL MISALIGN.'),
+('第三轮入口烟包阻塞而剔除',	'REJECT DUE TO 3RD WHEEL PACKET ENTRY JAM'),
+('第三轮半环阻塞而剔除',	'REJECTS DUE TO 3RD WHEEL HALF0RING JAM'),
+('第三轮缺内框纸而剔除', 'REJECT DUE TO 3RD WHEEL IN0FRAME ABSENCE'),
+('第五轮缺盒片而剔除',	'REJECTS DUE TO NO 5TH WHEEL BLANK'),
+('第五轮前缺盒片的剔除',	'BLANK REJECTS ABSENT FRONT IN 5TH WHEEL'),
+('第五轮入口烟包阻塞而剔除',	'REJECTS: PACKET JAM AT 5TH WHEEL ENTRY'),
+('第五轮缺铝箔纸而剔除',	'REJECTS: NO FOIL ON 5TH WHEEL'),
+('第五轮折叠器打开产生的剔除',	'REJECTS FOR OPENING 5TH WHEEL FOLDERS'),
+('第五轮缺内框纸产生的剔除', 'REJECT FOR ABSENCE INNER0FRAME 5TH WHEEL');
+UNLOCK TABLES;
+
+
+
+
+DROP TABLE IF EXISTS `consumption`;
+SET character_set_client = utf8mb4;
+CREATE TABLE `consumption` (
+  `id` int not NULL AUTO_INCREMENT,
+  `label_Chinese` varchar(255) DEFAULT NULL,
+  `label_English` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*data*/
+LOCK TABLES `consumption` WRITE;
+INSERT INTO `consumption` (label_Chinese, label_English)
+VALUES 
+('烟支投入总数',	'SC: CIGARETTE FEED COUNT'),
+('铝箔纸投入总张数',	'SC: FOIL UNWINDING COUNTT'),
+('小盒片投入总张数',	'SC: BLANK SUCTION COUNT'),
+('内框纸投入总张数',	'SC: INNER0FRAME SUCTION COUNT'),
+('烟包实际产量',	'SC: REAL PACKET PRODUCTION'),
+('产品被剔除',	'SC: REJECTED PRODUCTION'),
+('4号轮剔除数',	'SC: PACKETS REJECTED AT 4TH WHEEL'),
+('上/下梁架剔除数',	'SC: PACKETS REJECTED BEAM'),
+('出口通道成像剔除数',	'SC: PACKETS REJECTED AT EXIT CHAN. PACKET VIS.'),
+('每卷铝箔纸展开的张数',	'SC: FOIL REEL UNWINDING COUNT'),
+('每卷内框纸展开的张数',	'SC: INNER0FRAME REEL UNWINDING COUNT'),
+('每垛小盒片的张数',	'SC: XX BLANK STACK SUNCTION COUNT'),
+('入口处盒模剔除的烟支消耗',	'SC:'),
+('入口处盒模剔除的铝纸消耗',	'SC:'),
+('3号轮剔除的烟支消耗',	'SC:'),
+('3号轮剔除的铝纸消耗',	'SC:'),
+('3号轮剔除的内框纸消耗',	'SC:'),
+('3号轮剔除的商标纸消耗',	'SC:'),
+('4号轮剔除的烟支消耗',	'SC:'),
+('4号轮剔除的铝纸消耗',	'SC:'),
+('4号轮剔除的内框纸消耗',	'SC:'),
+('4号轮剔除的商标纸消耗',	'SC:'),
+('上/下梁架剔除的烟支消耗',	'SC:'),
+('上/下梁架剔除的铝纸消耗',	'SC:'),
+('上/下梁架剔除的内框纸消耗',	'SC:'),
+('上/下梁架剔除的商标纸消耗',	'SC:'),
+('出口通道成像剔除的烟支消耗',	'SC:'),
+('出口通道成像剔除的铝纸消耗',	'SC:'),
+('出口通道成像剔除的内框纸消耗',	'SC:'),
+('出口通道成像剔除的商标纸消耗',	'SC:'),
+('推进器脱离而剔除',	'SC: REJECTIONS DUE TO PUSHER RELEASE'),
+('盒模烟支侧面阻塞而剔除',	'SC: REJECTS DUE TO LATERAL BUNDLE JAMS'),
+('盒模凌乱引起的剔除',	'SC: REJECTIONS DUE TO CIGARETTE BUNDLE JAM'),
+('铝箔纸机组脱离而剔除',	'SC: REJECTS FOR FOIL GROUP DISENGAGE'),
+('铝箔纸内侧迭接的剔除',	'SC: REJECTS FOR INSIDE FOIL SPLICE'),
+('铝箔纸外侧迭接的剔除',	'SC: REJECTIONS DUE TO OUTER SIDE FOIL SPLICE'),
+('光电探测器插件板无信号而剔除',	'SC: REJ.DUE TO OPT.SENS.BOARD SIGNALS FAIL'),
+('光电探测器测出缺烟而剔除',	'SC: REJECTS DUE TO NO0CIG. FROM OPT.DETECTOR'),
+('烟支空头而剔除',	'SC: REJECTIONS DUE TO LOOSE0END CIGARETTES'),
+('手动剔除：偏移的铝箔纸',	'SC: MANUAL REJECTIONS 0 DISALIGNED FOIL'),
+('空盒模产生的不期望的盒模剔除',	'SC: REJECTS FOR UNDES.POCK.FROM EMP. POCKETS'),
+('盒片空白而剔除',	'SC: REJECTS DUE TO BLANKS WITHOUT PRINT'),
+('剔除：第二鼓轮上无盒片／不齐',	'SC: REJECTION: NO BLANK/DISALIGN ON 2ND DRUM'),
+('内框纸上存在带子的剔除',	'SC: REJ. FOR TAPE PRESENCE ON INNERFRAME'),
+('第三轮缺拉片而剔除',	'SC: REJECT DUE TO 3RD WHEEL "PULL" ABSENCE'),
+('第二轮缺铝箔纸而产生的剔除',	'SC: REJECTS DUE TO 2ND WHEEL FOIL ABSENCE'),
+('第三轮入口烟包阻塞而剔除',	'SC: REJECT DUE TO 3RD WHEEL PACKET ENTRY JAM'),
+('无请求第三轮剔除烟包',	'SC: PACKET REJECT AT 3RD WHEEL NOT REQUESTED'),
+('鼓轮上无存在内框纸时剔除物数量',	'SC: NO.REJECTS DUE TO NO INNER0FRAME ON DRUM'),
+('第三鼓轮皮带上缺盒片产生的剔除',	'SC: REJECTS FOR BLANK ABS. ON 3RD DRUM BELT'),
+('无请求第四轮剔除烟包',	'SC: PACKET REJECT AT 4TH WHEEL NOT REQUESTED'),
+('第三轮缺内框纸而剔除',	'SC: REJECT DUE TO 3RD WHEEL IN0FRAME ABSENCE'),
+('第三轮半环阻塞而剔除',	'SC: REJECTS DUE TO 3RD WHEEL HALF0RING JAM'),
+('涂胶器接合超出相位的剔除',	'SC: REJECTS FOR GLUER ENGAGE OUT OF PHASE'),
+('盒片涂胶不全而剔除',	'SC: REJECTS DUE TO INCOMPLETELY GLUED BLANKS'),
+('剔除：第三鼓轮上第一前盒片耳',	'SC: REJECTS: 1ST FRONT BLANK0EAR DRUM3'),
+('剔除：第三鼓轮上第一后盒片耳',	'SC: REJECTS: 1ST REAR BLANK0EAR 0 DRUM3'),
+('剔除：第三鼓轮上第二前盒片耳',	'SC: REJECTS: 2ND FRONT BLANK0EAR DRUM3'),
+('剔除：第三鼓轮上第二后盒片耳',	'SC: REJECTS: 2ND REAR BLANK0EAR 0 DRUM3'),
+('第四轮半环阻塞而剔除',	'SC: REJECTS DUE TO 4TH WHEEL HALF0RING JAM'),
+('第四轮烟包不规则而剔除',	'SC: REJECTS: IRREGULAR PACKETS ON 4TH WHEEL'),
+('第五轮前缺盒片的剔除',	'SC: BLANK REJECTS ABSENT FRONT IN 5TH WHEEL'),
+('第五轮缺盒片而剔除',	'SC: REJECTS DUE TO NO 5TH WHEEL BLANK'),
+('第五轮入口烟包阻塞而剔除',	'SC: REJECTS: PACKET JAM AT 5TH WHEEL ENTRY'),
+('第五轮折叠器打开产生的剔除',	'SC: REJECTS FOR OPENING 5TH WHEEL FOLDERS'),
+('第五轮缺铝箔纸而剔除',	'SC: REJECTS: NO FOIL ON 5TH WHEEL'),
+('第五轮缺内框纸产生的剔除',	'SC: REJECT FOR ABSENCE INNER0FRAME 5TH WHEEL'),
+('出口通道成像', '1#相机的剔除	SC: EXIT CHA. PACKET VISION 0 1# VIS. REJECT'),
+('出口通道成像', '2#相机的剔除	SC: EXIT CHA. PACKET VISION 0 2# VIS. REJECT'),
+('出口通道成像', '3#相机的剔除	SC: EXIT CHA. PACKET VISION 0 3# VIS. REJECT'),
+('出口通道成像', '4#相机的剔除	SC: EXIT CHA. PACKET VISION 0 4# VIS. REJECT');
+UNLOCK TABLES;
