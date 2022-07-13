@@ -106,7 +106,7 @@ func insertWarningSQL(warinsert WarningInsert) {
 
 //given an integer, this function returns that many records if possible
 //return an array of warnings where the id here is warning_id, namely warning type
-func getHistorySQL(n int)(wars []Warning) {
+func getHistorySQL(n int)(wars []AltraWarning) {
 	sqlStmt := `SELECT * FROM history ORDER BY id DESC LIMIT ?;`
 
 	rows, err := SQLDB.Query(sqlStmt, n)
@@ -128,9 +128,21 @@ func getHistorySQL(n int)(wars []Warning) {
 		}
 		
 		var war Warning = getWarningByIDSQL(hist.Warning_ID) 
-		war.Time = hist.Time
-		war.Value = hist.Value
-		wars = append(wars, war)
+		var altWar AltraWarning
+		altWar.ID = hist.ID
+		altWar.Warning_ID = war.ID
+		altWar.Label_Chinese = war.Label_Chinese
+		altWar.Label_English = war.Label_English
+		altWar.Function_name = war.Function_name
+		altWar.Function_Chinese = war.Function_Chinese
+		altWar.Function_English = war.Function_English
+		altWar.Group_label_Chinese = war.Group_label_Chinese
+		altWar.Group_label_English = war.Group_label_English
+		altWar.Machine_obj_Chinese = war.Machine_obj_Chinese
+		altWar.Machine_obj_English = war.Machine_obj_English
+		altWar.Value = hist.Value
+		altWar.Time = hist.Time
+		wars = append(wars, altWar)
 	}
 	return wars
 }

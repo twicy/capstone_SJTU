@@ -51,8 +51,6 @@ func putWarning(c *gin.Context) {
 }
 
 func generateWarnings(c *gin.Context) {
-	// Note that history here does not have ID, but only warning_id
-	// did not assign ID here for the sake of concurrency
 	id_str := c.Param("id")
 	id, _ := strconv.Atoi(id_str)
 	var warinsert WarningInsert
@@ -61,7 +59,7 @@ func generateWarnings(c *gin.Context) {
 		panic(err.Error())
 	}
 	fmt.Println(id)
-	go insertWarningRedis(warinsert)
+	//go insertWarningRedis(warinsert)
 	insertWarningSQL(warinsert)
 	c.IndentedJSON(http.StatusOK, gin.H{
 		"message": fmt.Sprintf("Successfully inserted a new warning with warning id %s:", id_str),
@@ -80,8 +78,8 @@ func errorResponse(err error) gin.H {
 
 
 func getHistory(c *gin.Context){
-	n_str := c.Param("num")
+	n_str := c.Query("num")
 	n, _ := strconv.Atoi(n_str)
-	wars := getHistorySQL(n)
-	c.IndentedJSON(http.StatusOK, wars)
+	results := getHistorySQL(n)
+	c.IndentedJSON(http.StatusOK, results)
 }
