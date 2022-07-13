@@ -43,8 +43,8 @@ func putWarning(c *gin.Context) {
 	if err != nil {
 		panic(err.Error())
 	}
-	putWarningSQL(warup)
 	go deleteWarningByIDRedis(warup.ID)
+	putWarningSQL(warup)
 	c.IndentedJSON(http.StatusOK, gin.H{
 		"message": fmt.Sprintf("Successfully update to warning id %d", warup.ID),
 	})

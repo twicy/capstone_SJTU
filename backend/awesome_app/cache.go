@@ -5,7 +5,6 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"strconv"
 
 	"github.com/go-redis/redis/v9"
@@ -78,6 +77,7 @@ func getWarningByIDRedis(id int) (war Warning) {
 	return war
 }
 
+// NOTE: the id here is the UNIQUE id, not the warning_id
 func deleteWarningByIDRedis(id int) {
 	id_str := strconv.Itoa(id)
 	_, err := redisDB.Del(Ctx, id_str).Result()
@@ -117,7 +117,6 @@ func getNewWarningsRedis() (newwars []Warning) {
 			redisDB.HSet(Ctx, key, "warning_id", warning_id, "if_newest", 0, "value", 1)
 			newwar.Value = 1
 			newwars = append(newwars, newwar)
-			fmt.Println(newwar)
 		}
 
 	}

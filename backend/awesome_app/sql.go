@@ -74,7 +74,7 @@ func getWarningAllSQL() (wars []Warning) {
 }
 
 func putWarningSQL(warup WarningUpdate) {
-	sqlStmt := "UPDATE warning SET value = ? WHERE id = ?"
+	sqlStmt := "UPDATE history SET value = ? WHERE id = ?"
 	_, err := SQLDB.Exec(sqlStmt, warup.Value, warup.ID)
 	if err != nil {
 		panic(err.Error())
