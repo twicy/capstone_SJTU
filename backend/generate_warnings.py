@@ -10,6 +10,8 @@ import threading
 import json
 from datetime import datetime
 from time import time
+import sys
+
 
 connection = None
 warnings_total = 0
@@ -58,32 +60,53 @@ def repeater(rand):
             logger.debug("MySQL connection is closed\n")
 
 
-try:
-    connection = mysql.connector.connect(host='localhost',
-                                        database='testdb',
-                                        user='client1',
-                                        password='password')
-    if connection.is_connected():
-        db_Info = connection.get_server_info()
-        logger.debug("Connected to MySQL Server version " + str(db_Info))
-        cursor = connection.cursor()
-        cursor.execute("SELECT COUNT(*) FROM warning;")
-        results = cursor.fetchall()[0][0]
-        warnings_total = results
-        logger.debug("Number of queries in database testdb:" + str(results))
+def generate_random():
+    rand = randint(0, warnings_total - 1)
+    repeater(rand)
+    threading.Timer(0.5, generate_random).start()
 
-except Error as e:
-    print("Error while connecting to MySQL", e)
-finally:
-    if connection and connection.is_connected():
-        cursor.close()
-        connection.close()
-        logger.debug("MySQL connection is closed")
 
-def generate():
-  threading.Timer(0.5, generate).start()
-  rand = randint(1, warnings_total - 1)
+def generate_locality(num, locality_factor=1):
+    while True:
+        num = randint(num - 2 * locality_factor, num + 2 * locality_factor)
+        if num >= 0 and num <= warnings_total - 1:
+            break
+    repeater(num)
+    threading.Timer(0.5, generate_locality, [num, locality_factor]).start()
 
-  repeater(rand)
 
-generate()
+def main():
+    try:
+        connection = mysql.connector.connect(host='localhost',
+                                            database='testdb',
+                                            user='client1',
+                                            password='password')
+        if connection.is_connected():
+            db_Info = connection.get_server_info()
+            logger.debug("Connected to MySQL Server version " + str(db_Info))
+            cursor = connection.cursor()
+            cursor.execute("SELECT COUNT(*) FROM warning;")
+            results = cursor.fetchall()[0][0]
+            global warnings_total
+            warnings_total = results
+            logger.debug("Number of queries in database testdb:" + str(results))
+
+    except Error as e:
+        print("Error while connecting to MySQL", e)
+    finally:
+        if connection and connection.is_connected():
+            cursor.close()
+            connection.close()
+            logger.debug("MySQL connection is closed")
+    #print("warnings_total: " + str(warnings_total))
+    args = sys.argv[1:]
+    if len(args) == 1 and args[0] == "locality":
+        generate_locality(randint(0, warnings_total - 1), int(warnings_total/10))
+    elif len(args) == 1 and args[0] == "random":
+        generate_random()
+    else:
+        print("Wrong Usage!")
+
+
+if __name__ == "__main__":
+   main()
