@@ -38,6 +38,21 @@ CREATE TABLE `history` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
+/*id also indicated time order*/
+/*schema*/
+DROP TABLE IF EXISTS `history_compare`;
+SET character_set_client = utf8mb4;
+CREATE TABLE `history_compare` (
+  `id` int not NULL AUTO_INCREMENT,
+  `warning_id` int NOT NULL,
+  `value` int DEFAULT '0',
+  `time` datetime DEFAULT CURRENT_TIMESTAMP,
+  `if_newest` int DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
 /*schema*/
 DROP TABLE IF EXISTS `production`;
 SET character_set_client = utf8mb4;

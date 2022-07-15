@@ -44,6 +44,49 @@ func getWarningByIDSQL(id int) (war Warning) {
 	return war
 }
 
+func getNewWarningsSQLCompare() (wars []AltraWarning){
+	rows, err := SQLDB.Query("SELECT * FROM history_compare WHERE if_newest = 1;")
+	if err != nil {
+		panic(err.Error())
+	}
+	for rows.Next() {
+		var histC HistoryCompare
+		err := rows.Scan(
+			&histC.ID,
+			&histC.Warning_ID,
+			&histC.Value,
+			&histC.Time,
+			&histC.IfNewest,
+		)
+		if err != nil {
+			panic(err.Error()) // proper error handling instead of panic in your app
+		}
+		sqlStmt := "UPDATE history_compare SET if_newest = 0 WHERE id = ?"
+		_, err2 := SQLDB.Exec(sqlStmt, histC.ID)
+		if err2 != nil {
+			panic(err2.Error())
+		}
+		var war Warning = getWarningByIDSQL(histC.Warning_ID) 
+		var altWar AltraWarning
+		altWar.ID = histC.ID
+		altWar.Warning_ID = war.ID
+		altWar.Label_Chinese = war.Label_Chinese
+		altWar.Label_English = war.Label_English
+		altWar.Function_name = war.Function_name
+		altWar.Function_Chinese = war.Function_Chinese
+		altWar.Function_English = war.Function_English
+		altWar.Group_label_Chinese = war.Group_label_Chinese
+		altWar.Group_label_English = war.Group_label_English
+		altWar.Machine_obj_Chinese = war.Machine_obj_Chinese
+		altWar.Machine_obj_English = war.Machine_obj_English
+		altWar.Value = histC.Value
+		altWar.Time = histC.Time
+		wars = append(wars, altWar)
+
+	}
+	return wars
+}
+
 func getWarningAllSQL() (wars []Warning) {
 	rows, err := SQLDB.Query("SELECT * FROM warning")
 	if err != nil {
@@ -81,6 +124,14 @@ func putWarningSQL(warup WarningUpdate) {
 	}
 }
 
+func putWarningSQLCompare(warup WarningUpdate) {
+	sqlStmt := "UPDATE history_compare SET value = ? WHERE id = ?"
+	_, err := SQLDB.Exec(sqlStmt, warup.Value, warup.ID)
+	if err != nil {
+		panic(err.Error())
+	}
+}
+
 func insertWarningSQL(warinsert WarningInsert) {
 	sqlStmt := `
 	INSERT INTO history (
@@ -104,6 +155,32 @@ func insertWarningSQL(warinsert WarningInsert) {
 
 }
 
+func insertWarningSQLCompare(warinsert WarningInsert) {
+	sqlStmt := `
+	INSERT INTO history_compare (
+		id,
+		warning_id,
+		value,
+		time,
+		if_newest)
+	VALUES (?,?,?,?,?);`
+
+	_, err := SQLDB.Exec(
+		sqlStmt,
+		warinsert.ID,
+		warinsert.Warning_ID,
+		1,
+		time.Now(),
+		1,
+	)
+
+	if err != nil {
+		panic(err.Error())
+	}
+
+}
+
+
 //given an integer, this function returns that many records if possible
 //return an array of warnings where the id here is warning_id, namely warning type
 func getHistorySQL(n int)(wars []AltraWarning) {
@@ -122,6 +199,49 @@ func getHistorySQL(n int)(wars []AltraWarning) {
 			&hist.Warning_ID,
 			&hist.Value,
 			&hist.Time,
+		)
+		if err != nil {
+			panic(err.Error())
+		}
+		
+		var war Warning = getWarningByIDSQL(hist.Warning_ID) 
+		var altWar AltraWarning
+		altWar.ID = hist.ID
+		altWar.Warning_ID = war.ID
+		altWar.Label_Chinese = war.Label_Chinese
+		altWar.Label_English = war.Label_English
+		altWar.Function_name = war.Function_name
+		altWar.Function_Chinese = war.Function_Chinese
+		altWar.Function_English = war.Function_English
+		altWar.Group_label_Chinese = war.Group_label_Chinese
+		altWar.Group_label_English = war.Group_label_English
+		altWar.Machine_obj_Chinese = war.Machine_obj_Chinese
+		altWar.Machine_obj_English = war.Machine_obj_English
+		altWar.Value = hist.Value
+		altWar.Time = hist.Time
+		wars = append(wars, altWar)
+	}
+	return wars
+}
+
+
+func getHistorySQLCompare(n int)(wars []AltraWarning) {
+	sqlStmt := `SELECT * FROM history_compare ORDER BY id DESC LIMIT ?;`
+
+	rows, err := SQLDB.Query(sqlStmt, n)
+
+	if err != nil {
+		panic(err.Error())
+	}
+
+	for rows.Next() {
+		var hist HistoryCompare
+		err := rows.Scan(
+			&hist.ID,
+			&hist.Warning_ID,
+			&hist.Value,
+			&hist.Time,
+			&hist.IfNewest,
 		)
 		if err != nil {
 			panic(err.Error())

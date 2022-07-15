@@ -1,2 +1,4 @@
-curl -X PUT localhost:8080/warnings/1 -H "Content-Type: application/json" -d '{"id": 1, "value": 1}'
-curl localhost:8080/api/history/5
+curl -X PUT localhost:8080/warnings/1 -H "Content-Type: application/json" -d '{"id": 1, "value": 0}'
+
+curl localhost:8080/warnings/new
+curl localhost:8080/api/history?num=5

@@ -32,6 +32,13 @@ def getNewestID(cursor):
     else:
         return myresult[0] + 1
 
+def getNewestIDCompare(cursor):
+    cursor.execute("SELECT id FROM history_compare ORDER BY id DESC LIMIT 1")
+    myresult = cursor.fetchone()
+    if not myresult:
+        return 1
+    else:
+        return myresult[0] + 1
 
 
 def repeater(rand):
@@ -45,7 +52,8 @@ def repeater(rand):
             db_Info = connection.get_server_info()
             logger.debug("Connected to MySQL Server version " + str(db_Info))
             cursor = connection.cursor()
-            id = getNewestID(cursor)
+            # id = getNewestID(cursor)
+            id = getNewestIDCompare(cursor)
             temp_str = url_str + "/" + str(rand)
             r = requests.post(url=temp_str, data=json.dumps({"id":id, "warning_id":rand}))
             logger.debug("receiving the following results from api server:")

@@ -45,6 +45,15 @@ type History struct {
 	Time	   time.Time `json:"time" time_format:"unix"`
 }
 
+
+type HistoryCompare struct {
+	ID         int `json:"id"`
+	Warning_ID int `json:"warning_id"`
+	Value	   int `json:"value"`
+	Time	   time.Time `json:"time" time_format:"unix"`
+	IfNewest  int `json:"if_newest"`
+}
+
 type AltraWarning struct {
 	ID                  int       `json:"id"`
 	Warning_ID 			int 	  `json:"warning_id"`
