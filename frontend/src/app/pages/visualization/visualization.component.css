@@ -1,3 +1,53 @@
 .plot {
     height: 100vh;
   }
+
+  .outer-container{
+    max-height: 700px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:1fr 1fr;
+    gap: 10px;
+    
+  }
+
+.example-card{
+  background-color: rgb(229, 229, 229);
+  opacity: 0.9;
+  /* width: fit-content; */
+}
+.example-card:hover{
+  box-shadow: 10px 5px 5px grey;
+  background-color: rgb(247, 229, 229);
+}
+
+
+.example-card1{
+  grid-column: 1/span 2;
+  grid-row:1/span 1;
+}
+.example-card2{
+  max-height: 600px;
+  grid-column: 1/span 1;
+  grid-row:2/span 1;
+
+}
+.example-card3{
+  max-height: 600px;
+  grid-column: 2/span 1;
+  grid-row:2/span 1;
+}
+
+.card-content-one{
+  display: flex;
+  justify-content: space-around;
+}
+.card-content-one div{
+  margin-left:20px;
+}
+.card-content-two,
+.card-content-three{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

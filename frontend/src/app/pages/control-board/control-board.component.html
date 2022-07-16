@@ -38,9 +38,7 @@
       </div>
   
       <div class="col-lg-3 col-lx-3"  id="m_content_sbub4" >
-        <app-warning-detail>
-        </app-warning-detail>
-
+        <app-warning-details></app-warning-details>
       </div>
     </div>
   </div>
@@ -57,12 +55,12 @@
             
           <span> <!-- style="display: none;" 隐藏-->
             <div style="height: 88%;margin-left: -15px;margin-right:-10px;">
-              TABLE   
+                
               <router-outlet></router-outlet>
             </div>
   
             <div class="btn-group " style="margin-left: -15px;margin-right: -10px;"> 
-               <button class="btn btn-default" [routerLink]="[{outlets:{primary:'news',region_machines:'regionmac'}}]">
+               <!-- <button class="btn btn-default" [routerLink]="[{outlets:{primary:'news',region_machines:'regionmac'}}]">
                 <span class="glyphicon glyphicon-ok"></span>
                 <br/>
                 图标按键1
@@ -72,7 +70,7 @@
                 <span class="glyphicon glyphicon-plus"></span>
                 <br/>
                 图标按键2
-               </button>
+               </button> -->
   
                <!-- <button class="btn btn-default"  (click)="BtThree_Click()" >   [routerLink]="[{outlets:{primary:'home',region_machines:'regionmac'}}]" -->
                 <!-- <span class="glyphicon glyphicon-edit"></span> -->
@@ -80,7 +78,7 @@
                 <!-- 图标按键3 -->
                <!-- </button> -->
   
-               <button class="btn btn-default"   [routerLink]="[{outlets:{primary:'menu/menu_loginoperation',region_machines:'regionmac'}}]" >
+               <!-- <button class="btn btn-default"   [routerLink]="[{outlets:{primary:'menu/menu_loginoperation',region_machines:'regionmac'}}]" >
                 <span class="glyphicon glyphicon-plus"></span>
                 <br/>
                 图标按键4
@@ -121,7 +119,7 @@
                 <br/>
                 图标按键10
                </button>
-  
+   -->
                
             </div>         
   
@@ -132,10 +130,10 @@
           </div>
             
         </div>
-  
+        
         <div class="col-lg-3 col-lx-3"   id="m_content_sbub3">
-          
-            <div id="m_content_sbub5">
+
+            <div id="m_content_sbub5" class="machine-selection">
               <!-- Machines区域 -->
               <button class="select-machine" routerLink="/">所有机器</button>
               <button class="select-machine" [routerLink]="[1]">主机</button>
@@ -145,7 +143,27 @@
               <!-- <router-outlet name="region_machines"></router-outlet> -->
             </div>
             <div   id="m_content_sbub6">
-              Groups区域
+              <!-- Groups区域 -->
+              <button (click)="reloadCurrentPage()">手动获取最新信息</button>
+              <div *ngIf="allWarnings.length!=0 || allWarnings==null;then thenBlock else elseBlock"></div>
+              <ng-template #thenBlock>
+                <table>
+                  <tr class="simple-table-head">
+                    <th>名称</th>
+                    <th>警报时间</th>
+                    <th>机器名称</th>
+                  </tr>
+                  <tr *ngFor="let warning of allWarnings.slice(0,5)">
+                    <td >{{warning.label_Chinese}}</td>
+                    <td>{{warning.time}}</td>
+                    <td>{{warning.machine_obj_Chinese}}</td>
+                  </tr>
+                  
+                </table>
+              </ng-template>
+              <ng-template #elseBlock>
+                <h3>无可显示数据</h3>
+            </ng-template>
             </div>
         </div>
   

@@ -1,0 +1,25 @@
+.warning-detail {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.normal .normal-message {
+    font-size: 24px;
+}
+.warning {
+    align-items: start;
+    background-color: red;
+}
+.label-chinese {
+    font-size: 24px;
+    line-height: 24px;
+    width: 100%;
+    padding: 10px 0;
+}

@@ -52,9 +52,8 @@
     border-left: 1px dashed white;
   }
   #m_content_sbub4 {
-    height: 100%;
-    /* background: red; */
     padding: 0;
+    height: 100%;
   }
   #m_content_sbub5 {
     height: 25%;
@@ -71,5 +70,16 @@
   .select-machine{
     color:brown;
     padding:5px 5px;
+  }
+
+  .machine-selection{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .machine-selection button{
+    width: 100px;
+    margin:3px 5px;
   }
   

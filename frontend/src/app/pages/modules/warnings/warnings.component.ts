@@ -38,12 +38,16 @@ export class WarningsComponent implements OnInit {
       this.fetchWarnings();
     });
 
-    this._warningListService.getWarnings()
-    .subscribe(
+    this._warningListService.getWarnings().subscribe(
       data=>{
         console.log("refetch component")
+        
         this.lstAllWarnings=data;
-        this.lstHiddenWarnings=this.lstAllWarnings.filter((warn_item)=>(warn_item.value===0));
+        if(this.lstAllWarnings==null){
+          this.lstAllWarnings=[]
+        }
+        console.log(this.lstAllWarnings)
+        this.lstHiddenWarnings=this.lstAllWarnings.filter((warn_item)=>(warn_item.value===1));
         console.log(typeof(this.id))
         if(this.id=="1"){
           this.lstAllWarnings=this.lstAllWarnings.filter((warn_item)=>(warn_item.machine_obj_English==='xx_main_machine'))
@@ -76,14 +80,19 @@ export class WarningsComponent implements OnInit {
   }
 
   onReverse(){
-    console.log(this.objPatch)
+    
     if(this.objPatch){
       this._warningListService.putWarnings(this.objPatch,this.objPatch.id.toString())
       .subscribe(
         data=>{
+          console.log('change data')
+          console.log(this.objPatch)
           // console.log("going to change value",this.objPatch.value)
           // console.log(data)
           this.objPatch.value=(this.objPatch.value+1)%2;
+          console.log("aaaaaaaaaa")
+          console.log(this.objPatch.value)
+          console.log("bbbbbbbbbb")
           this.fetchWarnings();
         }
       )
@@ -99,7 +108,10 @@ export class WarningsComponent implements OnInit {
       (response) => {
         console.log("refetch component")
         this.lstAllWarnings=response;
-        this.lstHiddenWarnings=this.lstAllWarnings.filter((warn_item)=>(warn_item.value===0));
+        if (this.lstAllWarnings==null){
+          this.lstAllWarnings=[]
+        }
+        this.lstHiddenWarnings=this.lstAllWarnings.filter((warn_item)=>(warn_item.value===1));
         if(this.id=="1"){
           this.lstAllWarnings=this.lstAllWarnings.filter((warn_item)=>(warn_item.machine_obj_English==='xx_main_machine'))
           this.lstHiddenWarnings=this.lstHiddenWarnings.filter((warn_item)=>(warn_item.machine_obj_English==='xx_main_machine'))
@@ -110,12 +122,41 @@ export class WarningsComponent implements OnInit {
           this.lstAllWarnings=this.lstAllWarnings.filter((warn_item)=>(warn_item.machine_obj_English==='cs_main_machine'))
           this.lstHiddenWarnings=this.lstHiddenWarnings.filter((warn_item)=>(warn_item.machine_obj_English==='cs_main_machine'))
         }
+        
       },
       (error) => {
         console.log(error);
       }
     );
   }
+
+  // fetchNewWarnings(): void {
+  //   this._warningListService.getNewWarnings().subscribe(
+  //     (response) => {
+  //       console.log("refetch component")
+  //       this.lstAllWarnings=response;
+  //       if (this.lstAllWarnings==null){
+  //         this.lstAllWarnings=[]
+  //       }
+  //       this.lstHiddenWarnings=this.lstAllWarnings.filter((warn_item)=>(warn_item.value===1));
+  //       if(this.id=="1"){
+  //         this.lstAllWarnings=this.lstAllWarnings.filter((warn_item)=>(warn_item.machine_obj_English==='xx_main_machine'))
+  //         this.lstHiddenWarnings=this.lstHiddenWarnings.filter((warn_item)=>(warn_item.machine_obj_English==='xx_main_machine'))
+  //       }else if(this.id=="2"){
+  //         this.lstAllWarnings=this.lstAllWarnings.filter((warn_item)=>(warn_item.machine_obj_English==='cb_main_maCHine'))
+  //         this.lstHiddenWarnings=this.lstHiddenWarnings.filter((warn_item)=>(warn_item.machine_obj_English==='cb_main_maCHine'))
+  //       }else if(this.id=="3"){
+  //         this.lstAllWarnings=this.lstAllWarnings.filter((warn_item)=>(warn_item.machine_obj_English==='cs_main_machine'))
+  //         this.lstHiddenWarnings=this.lstHiddenWarnings.filter((warn_item)=>(warn_item.machine_obj_English==='cs_main_machine'))
+  //       }
+        
+  //     },
+  //     (error) => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
+
   onTableDataChange(event: any) {
     this.page = event;
     this.fetchWarnings();
@@ -129,6 +170,10 @@ export class WarningsComponent implements OnInit {
     this.fetchWarnings();
     
   }
-
+  // reloadCurrentPage() {
+  //   this.fetchNewWarnings();
+  //   console.log(this.lstAllWarnings)
+  //   console.log(this.lstHiddenWarnings)
+  // }
   
 }

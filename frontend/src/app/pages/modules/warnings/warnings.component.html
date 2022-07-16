@@ -1,38 +1,55 @@
-<h2>{{displayHidden?"已屏蔽警报":"警报"}}</h2>
-<table>
-    <tr class="table-head">
-        <th>编号</th>
-        <th>名称</th>
-        <th>警报时间</th>
-        <th>机器名称</th>
-        <th>屏蔽</th>
-    </tr>
+<h2>{{displayHidden?"未解决警报":"警报"}}</h2>
 
-    <tr *ngFor="let warning of (displayHidden==true?lstHiddenWarnings:lstAllWarnings) | paginate
-        : {
-            itemsPerPage: tableSize,
-            currentPage: page,
-            totalItems: count
-        };
-        let i = index" class="table-body" (click)="onClickItem($event,warning)">
-        <th scope="row" >{{warning.id}}</th>
-        <td >{{warning.label_Chinese}}</td>
-        <td>{{warning.time}}</td>
-        <td>{{warning.machine_obj_Chinese}}</td>
-        <td>{{warning.value}}</td>
+<div *ngIf="lstAllWarnings.length!=0 || lstAllWarnings==null;then thenBlock else elseBlock"></div>
+
+    
+<ng-template #thenBlock>
+    <table>
+        <tr class="table-head">
+            <th>编号</th>
+            <th>名称</th>
+            <th>警报时间</th>
+            <th>机器名称</th>
+            <th>状态</th>
+        </tr>
+    
+        <tr *ngFor="let warning of (displayHidden==true?lstHiddenWarnings:lstAllWarnings) | paginate
+            : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+            };
+            let i = index" class="table-body {{warning.machine_obj_English}}" (click)="onClickItem($event,warning)">
+            <th scope="row" >{{warning.id}}</th>
+            <td >{{warning.label_Chinese}}</td>
+            <td>{{warning.time}}</td>
+            <td>{{warning.machine_obj_Chinese}}</td>
+            <td>{{warning.value}}</td>
+            
+        </tr>
+    </table>
+    <div class="d-flex justify-content-center clearfix">
+        <pagination-controls
+          previousLabel="Prev"
+          nextLabel="Next"
+          (pageChange)="onTableDataChange($event)"
+        >
+        </pagination-controls>
+      </div>
+    
+    
+</ng-template>
+
+<ng-template #elseBlock>
+    <h3>无可显示数据</h3>
+</ng-template>
+
+
+<div class="button-group">
+    <button (click)="onReverse()" >颠倒状态</button>
+    <button (click)="onClickAll()">所有</button>
         
-    </tr>
-</table>
-<div class="d-flex justify-content-center clearfix">
-    <pagination-controls
-      previousLabel="Prev"
-      nextLabel="Next"
-      (pageChange)="onTableDataChange($event)"
-    >
-    </pagination-controls>
-  </div>
+    <button (click)="onClickHidden()">未解决</button>
+    
+</div>
 
-<button (click)="onReverse()" >Reverse Status</button>
-<button (click)="onClickAll()">所有</button>
-
-<button (click)="onClickHidden()">屏蔽</button>

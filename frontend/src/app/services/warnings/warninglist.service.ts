@@ -12,10 +12,12 @@ export class WarninglistService {
   constructor(private httpclient:HttpClient) { }
   
   getWarnings():Observable<any>{
-    return this.httpclient.get('http://localhost:5000/warnings');
+    return this.httpclient.get('api/history?num=50');
   }
-
+  getNewWarnings():Observable<any>{
+    return this.httpclient.get(`warnings/new`);
+  }
   putWarnings(_warning:Warning,id:String):Observable<any>{
-    return this.httpclient.put('http://localhost:5000/warnings/'+id,{id:_warning.id,label_Chinese:_warning.label_Chinese,time:_warning.time,value:(_warning.value+1)%2});
+    return this.httpclient.put('warnings/'+id,{id:_warning.id,label_Chinese:_warning.label_Chinese,time:_warning.time,value:0});
   }
 }

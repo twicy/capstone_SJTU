@@ -31,9 +31,9 @@ export class PiechartComponent implements OnInit {
         const myChart = new Chart("pie-chart", {
           type: 'pie',
           data: {
-              labels: ['Display', 'Hidden'],
+              labels: ['Resolved', 'Not Resolved'],
               datasets: [{
-                  label: '# of Votes',
+                  label: '# of Warnings',
                   data: [this.lstDisplayedWarnings.length,this.lstHiddenWarnings.length],
                   backgroundColor: [
                       'rgba(255, 99, 132, 0.2)',  

@@ -20,6 +20,19 @@ tr.table-body th
     padding:10px 30px;
 }
 
+tr.xx_main_machine th,
+tr.xx_main_machine td{
+    color:rgb(20, 223, 245)
+}
+tr.cb_main_maCHine th,
+tr.cb_main_maCHine td{
+    color:rgba(255, 255, 0, 0.819)
+}
+tr.cs_main_machine th,
+tr.cs_main_machine td{
+    color:rgb(74, 173, 84)
+}
+
 tr{
     border-bottom: 1px solid white;
     border-right:1px solid white;
@@ -27,6 +40,26 @@ tr{
 
 tr.table-body:hover{
     background-color: grey;
+    cursor:pointer;
 }
 
+table{
+    /* min-width:800px; */
+    width: 95%;
+    padding-bottom: 5px;
+    
+}
+
+.button-group{
+    padding-left: 400px;
+}
+.button-group button{
+    margin:3px 3px;
+    
+}
+
+.clearfix{
+    margin-top: 5px;
+    padding-left: 350px;
+}
 
