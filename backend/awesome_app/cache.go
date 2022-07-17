@@ -113,8 +113,8 @@ func getNewWarningsRedis() (newAltraWars []AltraWarning) {
 			warning_id, _ := redisDB.HGet(Ctx, key, "warning_id").Result()
 			warning_id_int, _ := strconv.Atoi(warning_id)
 			newwar := getWarningByIDSQL(warning_id_int)
-			//set if_newest to 0
-			redisDB.HSet(Ctx, key, "warning_id", warning_id, "if_newest", 0, "value", 1)
+			//delete key
+			redisDB.Del(Ctx, key)
 			newwar.Value = 1
 			var altWar AltraWarning
 			key_int, _ := strconv.Atoi(key)

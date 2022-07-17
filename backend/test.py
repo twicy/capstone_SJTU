@@ -10,7 +10,7 @@ res_sql = []
 
 ## This part tests for cache/no cache difference ###
 # Clearly the size of the cache influences the performance #
-
+call ("./bin/clearall")
 ### TEST 1###
 # This part: after inserting 1000 pieces of warnings, get_new #
 # Cache: 1000 queries, history_compare: 1000 queries#
