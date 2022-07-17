@@ -31,17 +31,17 @@ func main() {
 	router.GET("/warnings/:id", getWarningByID)
 	router.GET("/warnings", getWarningAll)
 
-	//router.GET("/warnings/new", getNewWarnings)
-	router.GET("/warnings/new", getNewWarningsCompare)
+	router.GET("/warnings/new", getNewWarnings)
+	router.GET("/compare/warnings/new", getNewWarningsCompare)
 
-	//router.PUT("/warnings/:id", putWarning)
-	router.PUT("/warnings/:id", putWarningCompare)
+	router.PUT("/warnings/:id", putWarning)
+	router.PUT("/compare/warnings/:id", putWarningCompare)
 
-	//router.GET("/api/history", getHistory)
-	router.GET("/api/history", getHistoryCompare)
+	router.GET("/api/history", getHistory)
+	router.GET("/compare/api/history", getHistoryCompare)
 
-	//router.POST("/api/generate_warnings/:id", generateWarnings)
-	router.POST("/api/generate_warnings/:id", generateWarningsCompare)
+	router.POST("/api/generate_warnings/:id", generateWarnings)
+	router.POST("/compare/api/generate_warnings/:id", generateWarningsCompare)
 
 	router.Run(":8080")
 }
