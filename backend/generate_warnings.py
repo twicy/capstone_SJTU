@@ -91,7 +91,7 @@ def generate_random():
         count_down = count_down - 1
     rand = randint(0, warnings_total - 1)
     repeater(rand)
-    threading.Timer(0.5, generate_random).start()
+    threading.Timer(0.01, generate_random).start()
 
 
 def generate_locality(num, locality_factor=1):
@@ -105,7 +105,7 @@ def generate_locality(num, locality_factor=1):
         if num >= 0 and num <= warnings_total - 1:
             break
     repeater(num)
-    threading.Timer(0.5, generate_locality, [num, locality_factor]).start()
+    threading.Timer(0.01, generate_locality, [num, locality_factor]).start()
 
 def helper():
     global generate_mode
