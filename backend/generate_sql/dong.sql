@@ -199,3 +199,45 @@ VALUES
 ('出口通道成像', '3#相机的剔除	SC: EXIT CHA. PACKET VISION 0 3# VIS. REJECT'),
 ('出口通道成像', '4#相机的剔除	SC: EXIT CHA. PACKET VISION 0 4# VIS. REJECT');
 UNLOCK TABLES;
+
+
+DROP TABLE IF EXISTS `consumption_history`;
+SET character_set_client = utf8mb4;
+CREATE TABLE `consumption_history` (
+  `id` int not NULL AUTO_INCREMENT,
+  `week` int not NULL,
+  `shift` int not NULL,
+  `consumption_id` int not NULL,
+  `consumption` int not NUll,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- LOCK TABLES `consumption_history` WRITE;
+-- INSERT INTO `consumption_history` (week, shift, consumption_id, consumption)
+-- VALUES
+-- (1, 1, 9, 49),
+-- (2, 2, 5, 62),
+-- (3, 1, 37 ,31),
+-- (4, 2, 21 ,38);
+-- UNLOCK TABLES;
+
+
+DROP TABLE IF EXISTS `production_history`;
+SET character_set_client = utf8mb4;
+CREATE TABLE `production_history` (
+  `id` int not NULL AUTO_INCREMENT,
+  `week` int not NULL,
+  `shift` int not NULL,
+  `production_id` int not NULL,
+  `production` int not NUll,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+-- LOCK TABLES `production_history` WRITE;
+-- INSERT INTO `production_history` (week, shift, production_id, production)
+-- VALUES
+-- (1, 1, 11, 94),
+-- (2, 3, 5, 52),
+-- (3, 3, 41, 97),
+-- (4, 3, 9, 47);
+-- UNLOCK TABLES;

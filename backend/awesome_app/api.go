@@ -126,3 +126,14 @@ func getHistoryCompare(c *gin.Context) {
 	results := getHistorySQLCompare(n)
 	c.IndentedJSON(http.StatusOK, results)
 }
+
+
+func getConsumption(c *gin.Context) {
+	results := getConsumptionSQL()
+	c.IndentedJSON(http.StatusOK, results)
+}
+
+func getProduction(c *gin.Context) {
+	results := getProductionSQL()
+	c.IndentedJSON(http.StatusOK, results)
+}

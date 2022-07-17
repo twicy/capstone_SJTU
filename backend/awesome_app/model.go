@@ -46,6 +46,22 @@ type History struct {
 }
 
 
+type Consumption struct {
+	ID         int `json:"id"`
+	Week       int `json:"week"`
+	Shift	   int `json:"shift"`
+	Consumption_ID int `json:"consumption_id"`
+	Consumption int `json:"consumption"`
+}
+
+type Production struct {
+	ID         int `json:"id"`
+	Week       int `json:"week"`
+	Shift	   int `json:"shift"`
+	Production_ID int `json:"production_id"`
+	Production int `json:"production"`
+}
+
 type HistoryCompare struct {
 	ID         int `json:"id"`
 	Warning_ID int `json:"warning_id"`

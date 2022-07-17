@@ -43,5 +43,8 @@ func main() {
 	router.POST("/api/generate_warnings/:id", generateWarnings)
 	router.POST("/compare/api/generate_warnings/:id", generateWarningsCompare)
 
+	router.GET("/consumption", getConsumption)
+	router.GET("/production", getProduction)
+
 	router.Run(":8080")
 }

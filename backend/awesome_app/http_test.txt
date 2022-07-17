@@ -2,3 +2,4 @@ curl -X PUT localhost:8080/warnings/1 -H "Content-Type: application/json" -d '{"
 
 curl localhost:8080/warnings/new
 curl localhost:8080/api/history?num=5
+curl localhost:8080/production

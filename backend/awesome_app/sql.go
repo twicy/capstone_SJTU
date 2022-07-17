@@ -266,3 +266,50 @@ func getHistorySQLCompare(n int)(wars []AltraWarning) {
 	}
 	return wars
 }
+
+func getConsumptionSQL() (cons []Consumption) {
+	sqlStmt := `SELECT * FROM consumption_history;`
+	rows, err := SQLDB.Query(sqlStmt)
+	if err != nil {
+		panic(err.Error())
+	}
+	for rows.Next() {
+		var con Consumption
+		err2 := rows.Scan(
+			&con.ID,
+			&con.Week,
+			&con.Shift,
+			&con.Consumption_ID,
+			&con.Consumption,
+		)
+		if err2 != nil {
+			panic(err2.Error())
+		}
+		cons = append(cons, con)
+	}
+	return cons
+}
+
+func getProductionSQL()(prods []Production) {
+	sqlStmt := `SELECT * FROM production_history;`
+	rows, err := SQLDB.Query(sqlStmt)
+	if err != nil {
+		panic(err.Error())
+	}
+	for rows.Next() {
+		var prod Production
+		err2 := rows.Scan(
+			&prod.ID,
+			&prod.Week,
+			&prod.Shift,
+			&prod.Production_ID,
+			&prod.Production,
+		)
+		if err2 != nil {
+			panic(err2.Error())
+		}
+		prods = append(prods, prod)
+	}
+	return prods
+}
+	
