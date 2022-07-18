@@ -1,6 +1,6 @@
 #!/bin/bash
 set -Eeuo pipefail
-set -x
+
 
 mysql -u client1 -p -e "truncate testdb.history;"
 mysql -u client1 -p -e "truncate testdb.history_compare;"

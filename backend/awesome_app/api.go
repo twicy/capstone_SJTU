@@ -37,6 +37,7 @@ func getWarningAll(c *gin.Context) {
 
 // update sql
 // delete redis(in goroutine)
+// update warning status
 func putWarning(c *gin.Context) {
 	var warup WarningUpdate
 	err := c.ShouldBindJSON(&warup)

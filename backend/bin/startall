@@ -1,0 +1,6 @@
+#!/bin/bash
+set -Eeuo pipefail
+
+
+sudo service mysql start
+sudo service redis-server start
