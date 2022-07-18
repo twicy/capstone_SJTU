@@ -1,0 +1,45 @@
+Heap Status At Starting : 
+Heap Size :  16567812  bytes
+
+Partition of a set of 124370 objects. Total size = 16567992 bytes.
+ Index  Count   %     Size   % Cumulative  % Kind (class / dict of class)
+     0  37540  30  5327092  32   5327092  32 str
+     1  27061  22  1967680  12   7294772  44 tuple
+     2   8855   7  1565164   9   8859936  53 types.CodeType
+     3   8225   7  1184400   7  10044336  61 function
+     4  13969  11  1179464   7  11223800  68 bytes
+     5   1248   1  1160520   7  12384320  75 type
+     6    357   0   703984   4  13088304  79 dict of module
+     7   1248   1   635712   4  13724016  83 dict of type
+     8   1631   1   608128   4  14332144  87 dict (no owner)
+     9   5951   5   179480   1  14511624  88 int
+<388 more rows. Type e.g. '_.more' to view.>
+
+Heap Status After Setting Reference Point : 
+Heap Size :  616  bytes
+
+Partition of a set of 3 objects. Total size = 616 bytes.
+ Index  Count   %     Size   % Cumulative  % Kind (class / dict of class)
+     0      1  33      400  65       400  65 types.FrameType
+     1      1  33      144  23       544  88 function
+     2      1  33       72  12       616 100 builtins.weakref
+
+Heap Status After Creating Few Objects : 
+Heap Size :  61786  bytes
+
+Partition of a set of 525 objects. Total size = 61786 bytes.
+ Index  Count   %     Size   % Cumulative  % Kind (class / dict of class)
+     0     45   9    11948  19     11948  19 bytes
+     1    144  27    10098  16     22046  36 str
+     2     86  16     6920  11     28966  47 tuple
+     3     22   4     3872   6     32838  53 types.CodeType
+     4     51  10     3672   6     36510  59 builtins.weakref
+     5     23   4     3312   5     39822  64 function
+     6     15   3     3240   5     43062  70 set
+     7      3   1     3216   5     46278  75 type
+     8     33   6     2376   4     48654  79 types.BuiltinMethodType
+     9      4   1     1528   2     50182  81 collections.OrderedDict
+<53 more rows. Type e.g. '_.more' to view.>
+
+Memory Usage After Creation Of Objects :  61170  bytes
+
