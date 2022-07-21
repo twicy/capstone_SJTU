@@ -80,19 +80,15 @@ export class WarningsComponent implements OnInit {
   }
 
   onReverse(){
-    
     if(this.objPatch){
       this._warningListService.putWarnings(this.objPatch,this.objPatch.id.toString())
       .subscribe(
         data=>{
           console.log('change data')
           console.log(this.objPatch)
-          // console.log("going to change value",this.objPatch.value)
-          // console.log(data)
+
           this.objPatch.value=(this.objPatch.value+1)%2;
-          console.log("aaaaaaaaaa")
           console.log(this.objPatch.value)
-          console.log("bbbbbbbbbb")
           this.fetchWarnings();
         }
       )
@@ -121,8 +117,7 @@ export class WarningsComponent implements OnInit {
         }else if(this.id=="3"){
           this.lstAllWarnings=this.lstAllWarnings.filter((warn_item)=>(warn_item.machine_obj_English==='cs_main_machine'))
           this.lstHiddenWarnings=this.lstHiddenWarnings.filter((warn_item)=>(warn_item.machine_obj_English==='cs_main_machine'))
-        }
-        
+        }        
       },
       (error) => {
         console.log(error);

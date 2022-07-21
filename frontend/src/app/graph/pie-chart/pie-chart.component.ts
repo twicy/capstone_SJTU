@@ -36,8 +36,8 @@ export class PiechartComponent implements OnInit {
                   label: '# of Warnings',
                   data: [this.lstDisplayedWarnings.length,this.lstHiddenWarnings.length],
                   backgroundColor: [
-                      'rgba(255, 99, 132, 0.2)',  
-                      'rgba(75, 192, 192, 0.2)'
+                      'rgba(245,115,23, 0.6)',  
+                      'rgba(69,175,73, 0.6)'
                   ],
                   borderColor: [
                       'rgba(255, 99, 132, 1)',
@@ -46,6 +46,14 @@ export class PiechartComponent implements OnInit {
                   borderWidth: 1
               }]
           },
+          options:{
+            plugins:{
+              title:{
+                display:true,
+                text:'Resolved and Not-resolved Warnings'
+              }
+            }
+          }
           
       });
       }

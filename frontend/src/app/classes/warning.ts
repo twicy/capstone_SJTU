@@ -13,4 +13,5 @@ export class Warning {
     machine_obj_Chinese!:string;
     machine_obj_English!:string;
     group_label_English!:string;
+    group_label_Chinese!:string;
 }

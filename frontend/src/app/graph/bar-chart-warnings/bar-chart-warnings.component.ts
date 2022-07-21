@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartOptions, ChartType, ChartDataset } from 'chart.js';
-import { BaseChartDirective } from 'ng2-charts';
+import { Chart,registerables } from 'chart.js';
+import { WarninglistService } from 'src/app/services/warnings/warninglist.service';
+import { Warning } from 'src/app/classes/warning';
+import { countbyKeys,sortByKey } from 'src/app/util_func/groupAndSort';
 
 @Component({
   selector: 'app-bar-chart-warnings',
@@ -9,29 +11,68 @@ import { BaseChartDirective } from 'ng2-charts';
 })
 export class BarChartWarningsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _warningService:WarninglistService) { 
+    Chart.register(...registerables);
+  }
+
+  allWarnings:Warning[]=[];
+  warningTotalByType:any[]=[];
+  myChart:any=[];
+
+  top5warningTotal:number[]=[];
+  top5warningTotalName:number[]=[];
 
   ngOnInit(): void {
-  }
-  barChartOptions: ChartOptions = {
-    responsive: true,
-    
-  };
-  barChartLabels: BaseChartDirective["labels"] = ['#28', '#10', '#1', '#4', '#35', '#19'];
-  barChartType: ChartType = 'bar';
-  barChartLegend = true;
-  barChartPlugins = [];
+    this._warningService.getWarningsLong().subscribe(
+      data=>{
+        this.allWarnings=data;
+        this.warningTotalByType=countbyKeys(this.allWarnings,['label_Chinese'],'ct')
+        this.warningTotalByType=sortByKey(this.warningTotalByType,'ct');
+        console.log(this.warningTotalByType)
+        for(let i=0;i<5;i++){
+          this.top5warningTotalName.push(this.warningTotalByType[i].label_Chinese)
+          this.top5warningTotal.push(this.warningTotalByType[i].ct)
+        }
+        console.log(this.top5warningTotal)
+        console.log(this.top5warningTotalName)
+
+        this.myChart=new Chart("bar-chart-warning",{
+          type:"bar",
+          data:{
+            labels:this.top5warningTotalName,
+            datasets:[{
+              label:'Count',
+              data:this.top5warningTotal,
+              backgroundColor: [
+                'rgba(235,115,23, 0.7)',
+                'rgba(236,126,42, 0.7)',
+                'rgba(236,166,46, 0.7)',
+                'rgba(245,179,65, 0.7)',
+                'rgba(252,201,62, 0.7)',
+                
+              ],
+              borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 159, 64)',
+                
+              ],
+              borderWidth:1
+            }]
+          },
+          options:{
+            plugins:{
+              title:{
+                display:true,
+                text:'Top 7 components with most production'
+              }
+            }
+          }
+        })
   
-  barChartData: ChartDataset[] = [
-    { 
-      data: [175,153,133,110,81,53], 
-      label: 'Occurance' ,
-      "backgroundColor": "rgba(255, 10, 132, 0.8)",
-      "pointBackgroundColor": "rgba(229, 229, 229, 1)",
-      "pointHoverBackgroundColor": "rgba(151,187,205,1)",
-      "borderColor": "rgba(0,0,0,0)",
-      "pointBorderColor": "#fff",
-      "pointHoverBorderColor": "rgba(151,187,205,1)"
-    }
-  ];
+      }
+    )
+  }
 }

@@ -9,7 +9,6 @@ import { WarningsComponent } from './pages/modules/warnings/warnings.component';
 
 const routes: Routes = [{
   path: '',
-  
   component: LayoutComponent,
   children: [
     {
@@ -20,7 +19,6 @@ const routes: Routes = [{
       path:'',
       redirectTo:'Machine',
       pathMatch: 'full',
-      // component:ControlBoardComponent
     },
     {
       path:'Machine',
@@ -29,20 +27,15 @@ const routes: Routes = [{
         {
           path:'',
           component:WarningsComponent,
-          // outlet:"table-outlet",
           pathMatch:'full'
         },
         
         {
           path: ':id',
           component:WarningsComponent,
-          // outlet:"table-outlet",
-          // pathMatch:'full'
-        },
-        
+        }, 
       ]
     }
-    
   ]
 }];
 

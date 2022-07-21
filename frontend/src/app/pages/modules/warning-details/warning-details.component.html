@@ -1,15 +1,24 @@
 
-<div *ngIf="isNormal==true;then normalBlock else warningBlock"></div>
-<ng-template #normalBlock>
-    <div class="warning-detail normal">
-        <div class="normal-message">正常运行</div>
-    </div>
-</ng-template>
-<ng-template #warningBlock>
-    <div class="warning-detail warning">
-        <div class="label-chinese">警告：{{ warningData?.label_Chinese }}</div>
-        <div class="machine-label">机器名称：{{ warningData?.machine_obj_Chinese}}</div>
-    </div>
-</ng-template>
+    <div *ngIf="isNormal==true;then normalBlock else warningBlock"></div>
+    <ng-template #normalBlock>
+        <div class="warning-detail normal">
+            <div class="normal-message">正常运行</div>
+            <div class="btn-group-autowarning">
+                <button (click)="stopGenerate()">stop</button>
+                <button (click)="startGenerate()">continue</button>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #warningBlock>
+        <div class="warning-detail warning">
+            <div class="label-chinese">警告：{{ warningData?.label_Chinese }}</div>
+            <div class="machine-label">机器名称：{{ warningData?.machine_obj_Chinese}}</div>
+            <div class="btn-group-autowarning">
+                <button (click)="stopGenerate()" class="new-warning-btn">stop</button>
+                <button (click)="startGenerate()" class="new-warning-btn">continue</button>
+            </div>
+        </div>
+    </ng-template>
+
 
 

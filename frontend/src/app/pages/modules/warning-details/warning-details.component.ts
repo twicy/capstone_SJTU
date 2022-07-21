@@ -42,4 +42,13 @@ export class WarningDetailsComponent implements OnInit {
     clearInterval(this.timer);
   }
 
+  stopGenerate(){
+    clearInterval(this.timer);
+  }
+  startGenerate(){
+    this.timer = setInterval(() => {
+      this.fetchNewWarnings();
+    }, 2000)
+  }
+
 }

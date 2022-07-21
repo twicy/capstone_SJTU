@@ -20,6 +20,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { ElectronService } from './core/services';
 import { WarninglistService } from './services/warnings/warninglist.service';
 import { NewWarningsService } from './services/new-warnings/new-warnings.service';
+import { ProductionConsumptionService } from './services/production-consumption/production-consumption.service';
 
 
 import { ControlBoardComponent } from './pages/control-board/control-board.component';
@@ -31,7 +32,6 @@ import { BarChartWarningsComponent } from './graph/bar-chart-warnings/bar-chart-
 import { LineChartConsumptionComponent } from './graph/line-chart-consumption/line-chart-consumption.component';
 import { LineChartProductionComponent } from './graph/line-chart-production/line-chart-production.component';
 import { WarningDetailsComponent } from './pages/modules/warning-details/warning-details.component';
-
 
 
 
@@ -62,9 +62,9 @@ import { WarningDetailsComponent } from './pages/modules/warning-details/warning
     CommonModule, 
     HttpClientModule,
     NgxPaginationModule,
-    NgChartsModule
+    NgChartsModule,
   ],
-  providers: [WarninglistService,NewWarningsService],
+  providers: [WarninglistService,NewWarningsService,ProductionConsumptionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

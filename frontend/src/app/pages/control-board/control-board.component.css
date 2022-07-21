@@ -52,8 +52,9 @@
     border-left: 1px dashed white;
   }
   #m_content_sbub4 {
-    padding: 0;
     height: 100%;
+    /* height: 250px; */
+    /* background: red; */
   }
   #m_content_sbub5 {
     height: 25%;

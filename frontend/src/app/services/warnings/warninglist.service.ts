@@ -14,9 +14,14 @@ export class WarninglistService {
   getWarnings():Observable<any>{
     return this.httpclient.get('api/history?num=50');
   }
+  getWarningsLong():Observable<any>{
+    return this.httpclient.get('api/history?num=100');
+  }
+
   getNewWarnings():Observable<any>{
     return this.httpclient.get(`warnings/new`);
   }
+
   putWarnings(_warning:Warning,id:String):Observable<any>{
     return this.httpclient.put('warnings/'+id,{id:_warning.id,label_Chinese:_warning.label_Chinese,time:_warning.time,value:0});
   }
