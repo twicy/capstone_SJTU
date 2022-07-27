@@ -1,0 +1,28 @@
+2022-07-27 21:55:27,576 ##### TEST 1 #####
+2022-07-27 21:55:30,598 Starting new HTTP connection (1): localhost:8080
+2022-07-27 21:55:30,658 http://localhost:8080 "GET /warnings/new HTTP/1.1" 200 None
+2022-07-27 21:55:30,659 Time used for cache + database: 0.06495189666748047
+2022-07-27 21:55:33,684 Starting new HTTP connection (1): localhost:8080
+2022-07-27 21:55:34,379 http://localhost:8080 "GET /compare/warnings/new HTTP/1.1" 200 None
+2022-07-27 21:55:34,380 Time used for database only: 0.6974813938140869
+2022-07-27 21:55:34,381 ##### END OF TEST 1 #####
+
+2022-07-27 21:55:34,513 ##### TEST 1 #####
+2022-07-27 21:55:37,545 Starting new HTTP connection (1): localhost:8080
+2022-07-27 21:55:37,600 http://localhost:8080 "GET /warnings/new HTTP/1.1" 200 None
+2022-07-27 21:55:37,600 Time used for cache + database: 0.056511640548706055
+2022-07-27 21:55:40,702 Starting new HTTP connection (1): localhost:8080
+2022-07-27 21:55:41,403 http://localhost:8080 "GET /compare/warnings/new HTTP/1.1" 200 None
+2022-07-27 21:55:41,405 Time used for database only: 0.7032835483551025
+2022-07-27 21:55:41,405 ##### END OF TEST 1 #####
+
+2022-07-27 21:55:41,525 ##### TEST 1 #####
+2022-07-27 21:55:44,519 Starting new HTTP connection (1): localhost:8080
+2022-07-27 21:55:44,580 http://localhost:8080 "GET /warnings/new HTTP/1.1" 200 None
+2022-07-27 21:55:44,581 Time used for cache + database: 0.06247878074645996
+2022-07-27 21:55:47,527 Starting new HTTP connection (1): localhost:8080
+2022-07-27 21:55:48,225 http://localhost:8080 "GET /compare/warnings/new HTTP/1.1" 200 None
+2022-07-27 21:55:48,226 Time used for database only: 0.700139045715332
+2022-07-27 21:55:48,226 ##### END OF TEST 1 #####
+
+2022-07-27 21:55:48,340 ##### TEST 1 #####

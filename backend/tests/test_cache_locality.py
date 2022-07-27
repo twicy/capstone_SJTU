@@ -1,3 +1,4 @@
+"""Run this test under backend folder."""
 from subprocess import Popen, PIPE, call
 import time
 import requests
@@ -6,11 +7,11 @@ from tqdm import tqdm
 import pandas as pd
 
 
-n = 1000
+n = 10
 my_url= "http://localhost:8080/api/warnings/new"
 res_redis = []
 res_sql = []
-logging.basicConfig(filename="generate_warnings.log", 
+logging.basicConfig(filename="logs/test_cache_locality.log", 
 					format='%(asctime)s %(message)s', 
 					filemode='w')
 logger=logging.getLogger() 
@@ -20,7 +21,7 @@ logger.setLevel(logging.DEBUG)
 def test1():
     ## This part tests for cache/no cache difference ###
     # Clearly the size of the cache influences the performance #
-    call ("./bin/clearall")
+    call ("./bin/clearall.sh")
     ### TEST 1###
     # This part: after inserting 1000 pieces of warnings, get_new #
     # Cache: 1000 queries, history_compare: 1000 queries#
@@ -54,7 +55,7 @@ def test2():
     # This part: after inserting 1000 pieces of warnings, get_new, insert 10 pieces of warnings, get_new #
     # Cache: 10 queries, history_compare: 1010 queries#
     # Anticipation: the cache is going to work properly #
-    call ("./bin/clearall")
+    call ("./bin/clearall.sh")
     logger.debug("##### TEST 2 #####")
     # inserted 100 new warnings into history and cache
     call("python3 generate_warnings.py random cache 100", shell=True)
@@ -86,20 +87,20 @@ def test3():
     # This part: compare between inserting 1000 pieces of random warnings and naive locality #
     # Anticipation: the cache is not going to work properly #
     logger.debug("##### TEST 3 #####")
-    # This is test_mode=nocache #
+    # This is test_mode=cache #
     # clear all memories, including mysql databases and redis cache
-    call("./bin/clearall")
+    call("./bin/clearall.sh")
 
-    call("python3 generate_warnings.py random nocache 100", shell=True)
+    call("python3 generate_warnings.py random cache 100", shell=True)
     test3_random_start = time.time()
-    r = requests.get("http://localhost:8080/compare/warnings/new")
+    r = requests.get("http://localhost:8080/warnings/new")
     test3_random_end = time.time()
     test3_random_time = test3_random_end - test3_random_start
     logger.debug("Time used for random: " + str(test3_random_time))
 
-    call("python3 generate_warnings.py locality nocache 100", shell=True)
+    call("python3 generate_warnings.py locality cache 100", shell=True)
     test3_locality_start = time.time()
-    r = requests.get("http://localhost:8080/compare/warnings/new")
+    r = requests.get("http://localhost:8080/warnings/new")
     test3_locality_end = time.time()
     test3_locality_time = test3_locality_end - test3_locality_start
     logger.debug("Time used for locality: " + str(test3_locality_time))
@@ -124,7 +125,8 @@ def stats_helper(test_id, test_results, col1, col2):
 def result_collector(testid, func, col1, col2):
     res1 = []
     res2 = []
-    for _ in tqdm(range(100)):
+    global n
+    for _ in tqdm(range(n)):
         temp1, temp2 = func()
         res1.append(temp1)
         res2.append(temp2)
