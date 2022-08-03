@@ -53,7 +53,7 @@ export class LineChartProductionComponent implements OnInit {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Total Consumption'
+                    text: 'Total Production'
                 }
             }
           }

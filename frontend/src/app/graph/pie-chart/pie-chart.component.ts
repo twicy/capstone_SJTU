@@ -21,7 +21,7 @@ export class PiechartComponent implements OnInit {
   lstDisplayedWarnings:Warning[]=[];
 
   ngOnInit(): void {
-    this._warningListService.getWarnings()
+    this._warningListService.getWarningsLong()
     .subscribe(
       data=>{
         this.lstAllWarnings=data;

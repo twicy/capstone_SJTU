@@ -9,6 +9,7 @@ export class Warning {
     id!:number;
     label_Chinese!:string;
     time!:string;
+    dayOfWeek!:string;
     value!:number;
     machine_obj_Chinese!:string;
     machine_obj_English!:string;

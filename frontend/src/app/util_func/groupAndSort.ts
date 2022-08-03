@@ -30,3 +30,9 @@ export function countbyKeys(data:any[], keyFields, accumulator) {
     return Object.assign(result, { [key] : val });
   }, {}));
 }
+
+export function getDayOfWeek(date) {
+  const dayOfWeek = new Date(date).getDay();    
+  return isNaN(dayOfWeek) ? null : 
+    ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday','Sunday'][dayOfWeek];
+}

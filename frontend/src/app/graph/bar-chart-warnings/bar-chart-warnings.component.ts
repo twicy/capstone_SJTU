@@ -66,7 +66,7 @@ export class BarChartWarningsComponent implements OnInit {
             plugins:{
               title:{
                 display:true,
-                text:'Top 7 components with most production'
+                text:'Top 5 warnings that occur most'
               }
             }
           }

@@ -32,6 +32,7 @@ import { BarChartWarningsComponent } from './graph/bar-chart-warnings/bar-chart-
 import { LineChartConsumptionComponent } from './graph/line-chart-consumption/line-chart-consumption.component';
 import { LineChartProductionComponent } from './graph/line-chart-production/line-chart-production.component';
 import { WarningDetailsComponent } from './pages/modules/warning-details/warning-details.component';
+import { MultiLineChartWarningComponent } from './graph/multi-line-chart-warning/multi-line-chart-warning.component';
 
 
 
@@ -52,6 +53,7 @@ import { WarningDetailsComponent } from './pages/modules/warning-details/warning
     LineChartConsumptionComponent,
     LineChartProductionComponent,
     WarningDetailsComponent,
+    MultiLineChartWarningComponent,
 
   ],
   imports: [

@@ -6,15 +6,18 @@
     <mat-card-header>
       <!-- <div mat-card-avatar class="example-header-image"></div> -->
       <mat-card-title >Warning Statistics</mat-card-title>
-      <mat-card-subtitle>For past 5 weeks</mat-card-subtitle>
+      <mat-card-subtitle>For past 200 warnings</mat-card-subtitle>
     </mat-card-header>
     
-    <mat-card-content class="card-content-one">
-      <div>
+    <mat-card-content  class="card-content-one">
+      <div class="warning-content1" >
         <app-pie-chart></app-pie-chart>
       </div>
-      <div style="width: 350px; height: 300px;">
+      <div style="width: 350px; height: 300px;" class="warning-content2">
         <app-bar-chart-warnings ></app-bar-chart-warnings>
+      </div>
+      <div class="warning-content3">
+        <app-multi-line-chart-warning></app-multi-line-chart-warning>
       </div>
       
     </mat-card-content>

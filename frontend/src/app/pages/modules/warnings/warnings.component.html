@@ -1,4 +1,5 @@
-<h2>{{displayHidden?"未解决警报":"警报"}}</h2>
+<h2 style="margin-left:20px">{{displayHidden?"未解决警报":"警报"}}</h2>
+<h3 style="margin-left:20px">0:已解决， 1:未解决</h3>
 
 <div *ngIf="lstAllWarnings.length!=0 || lstAllWarnings==null;then thenBlock else elseBlock"></div>
 

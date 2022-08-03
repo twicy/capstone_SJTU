@@ -15,7 +15,7 @@ export class WarninglistService {
     return this.httpclient.get('api/history?num=50');
   }
   getWarningsLong():Observable<any>{
-    return this.httpclient.get('api/history?num=100');
+    return this.httpclient.get('api/history?num=200');
   }
 
   getNewWarnings():Observable<any>{
